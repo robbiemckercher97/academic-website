@@ -89,7 +89,7 @@ const Home: NextPage = () => {
           <div className={styles.heroSection}>
             <div className={styles.photoContainer}>
               <img
-                src="/me.jpeg"
+                src="/me.jpg"
                 alt="Robert McKercher"
                 className={styles.photo}
               />
