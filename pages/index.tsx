@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 interface Paper {
@@ -42,74 +43,118 @@ const papers: Paper[] = [
 ];
 
 const Home: NextPage = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <Head>
         <title>Robert McKercher - Economist</title>
         <meta name="description" content="Robert McKercher - Academic Economist, McMaster University" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* Navigation */}
+      <nav className={styles.nav}>
+        <div className={styles.navContainer}>
+          <div className={styles.navBrand}>Robert McKercher</div>
+          <ul className={styles.navLinks}>
+            <li>
+              <a onClick={() => scrollToSection('about')} style={{ cursor: 'pointer' }}>
+                About
+              </a>
+            </li>
+            <li>
+              <a onClick={() => scrollToSection('research')} style={{ cursor: 'pointer' }}>
+                Research
+              </a>
+            </li>
+            <li>
+              <a onClick={() => scrollToSection('cv')} style={{ cursor: 'pointer' }}>
+                CV
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       <div className={styles.container}>
-        {/* Header Section */}
-        <div className={styles.header}>
-          <div className={styles.photo}>
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Robert McKercher"
-            />
-          </div>
-          <div className={styles.bio}>
-            <div className={styles.name}>Robert McKercher</div>
-            <div className={styles.title}>Economist</div>
-            <div className={styles.contact}>
-              <p><strong>Email:</strong> mckerchr@mcmaster.ca</p>
-              <p><strong>Office:</strong> Kenneth Taylor Hall (KTH), Room 706</p>
-              <p>
-                <strong>Department of Economics</strong><br />
-                McMaster University<br />
-                1280 Main Street West<br />
-                Hamilton, Ontario, Canada L8S 4M4
-              </p>
+        {/* About Section */}
+        <div id="about" className={styles.section}>
+          <div className={styles.heroSection}>
+            <div className={styles.photoContainer}>
+              <img
+                src="https://via.placeholder.com/180"
+                alt="Robert McKercher"
+                className={styles.photo}
+              />
             </div>
-            <p style={{ marginTop: '1rem', color: '#666' }}>
-              [Your bio and research interests to be added]
-            </p>
+            <div className={styles.bioContainer}>
+              <div className={styles.name}>Robert McKercher</div>
+              <div className={styles.title}>Economist, McMaster University</div>
+              <p className={styles.bioText}>
+                [Your bio and research interests to be added]
+              </p>
+              <div className={styles.contact}>
+                <p>
+                  <strong>Email:</strong> mckerchr@mcmaster.ca
+                </p>
+                <p>
+                  <strong>Office:</strong> Kenneth Taylor Hall (KTH), Room 706
+                </p>
+                <p>
+                  <strong>Department of Economics</strong>
+                  <br />
+                  McMaster University
+                  <br />
+                  1280 Main Street West
+                  <br />
+                  Hamilton, Ontario, Canada L8S 4M4
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* CV Section */}
-        <div className={styles.section}>
+        <div id="cv" className={styles.section}>
           <div className={styles.sectionTitle}>Curriculum Vitae</div>
           <div className={styles.cvSection}>
             <a href="/cv.pdf" className={styles.cvButton}>
               Download CV (PDF)
             </a>
-            <p style={{ marginTop: '1rem', color: '#666', fontSize: '0.9rem' }}>
+            <p className={styles.cvNote}>
               Upload your CV as public/cv.pdf
             </p>
           </div>
         </div>
 
         {/* Research Section */}
-        <div className={styles.section}>
+        <div id="research" className={styles.section}>
           <div className={styles.sectionTitle}>Research</div>
-          {papers.map((paper) => (
-            <div key={paper.id} className={styles.paper}>
-              <div className={styles.paperTitle}>{paper.title}</div>
-              {paper.authors && <div className={styles.paperAuthors}>{paper.authors}</div>}
-              {paper.description && <div className={styles.paperDescription}>{paper.description}</div>}
-              {paper.links && paper.links.length > 0 && (
-                <div className={styles.paperLinks}>
-                  {paper.links.map((link, index) => (
-                    <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
-                      {link.text}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+          <div className={styles.papersContainer}>
+            {papers.map((paper) => (
+              <div key={paper.id} className={styles.paper}>
+                <div className={styles.paperTitle}>{paper.title}</div>
+                {paper.authors && <div className={styles.paperAuthors}>{paper.authors}</div>}
+                {paper.description && <div className={styles.paperDescription}>{paper.description}</div>}
+                {paper.links && paper.links.length > 0 && (
+                  <div className={styles.paperLinks}>
+                    {paper.links.map((link, index) => (
+                      <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
+                        {link.text}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Footer */}
