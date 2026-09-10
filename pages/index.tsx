@@ -54,7 +54,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Robert McKercher - Economist</title>
-        <meta name="description" content="Robert McKercher - Academic Economist, McMaster University" />
+        <meta name="description" content="Robert McKercher - PhD Candidate in Economics, McMaster University" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -96,7 +96,8 @@ const Home: NextPage = () => {
             </div>
             <div className={styles.bioContainer}>
               <div className={styles.name}>Robert McKercher</div>
-              <div className={styles.title}>Economist, McMaster University</div>
+              <div className={styles.title}>PhD Candidate in Economics</div>
+              <div className={styles.subtitle}>Department of Economics, McMaster University</div>
               <p className={styles.bioText}>
                 [Your bio and research interests to be added]
               </p>
