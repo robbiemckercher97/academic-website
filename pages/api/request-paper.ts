@@ -48,23 +48,8 @@ export default async function handler(
       `,
     };
 
-    // Confirmation email to requester
-    const requesterConfirmation = {
-      from: process.env.EMAIL_USER,
-      to: requesterEmail,
-      subject: 'Paper Request Received',
-      html: `
-        <p>Hello ${requesterName},</p>
-        <p>Thank you for requesting the paper:</p>
-        <p><em>"${paperTitle}"</em></p>
-        <p>Robert McKercher has been notified of your request and will send you a copy as soon as possible.</p>
-        <p>Best regards,<br/>Robert McKercher</p>
-      `,
-    };
-
-    // Send both emails
+    // Send email to researcher only
     await transporter.sendMail(researcherEmail);
-    await transporter.sendMail(requesterConfirmation);
 
     return res.status(200).json({ message: 'Paper request sent successfully' });
   } catch (error) {
