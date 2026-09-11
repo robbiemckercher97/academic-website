@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 const CV: NextPage = () => {
@@ -12,18 +13,35 @@ const CV: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.cvPageContainer}>
-        <div className={styles.cvHeader}>
-          <a href="/McKercher_CV_2026.pdf" className={styles.cvDownloadButton} download>
-            Download CV
-          </a>
+      {/* Navigation */}
+      <nav className={styles.nav}>
+        <div className={styles.navContainer}>
+          <div className={styles.navBrand}>
+            <Link href="/">
+              <a>Robert McKercher</a>
+            </Link>
+          </div>
+          <ul className={styles.navLinks}>
+            <li>
+              <Link href="/">
+                <a>Research</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/cv">
+                <a>CV</a>
+              </Link>
+            </li>
+          </ul>
         </div>
+      </nav>
 
+      <div className={styles.cvPageWrapper}>
         {/* Embedded PDF viewer - full page */}
-        <div className={styles.cvFullPage}>
+        <div className={styles.pdfContainer}>
           <iframe
             src="/McKercher_CV_2026.pdf#toolbar=1"
-            className={styles.cvFullPageViewer}
+            className={styles.pdfViewer}
             title="CV - Robert McKercher"
           />
         </div>
