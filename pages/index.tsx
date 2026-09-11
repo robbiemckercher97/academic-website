@@ -214,43 +214,47 @@ const Home: NextPage = () => {
       </nav>
 
       <div className={styles.container}>
-        {/* Hero Section - Photo Left, Name/Info Centered */}
-        <div className={styles.heroLayout}>
-          <div className={styles.photoContainer}>
+        {/* Profile Section - Two Column */}
+        <section className={styles.profileSection}>
+          <div className={styles.profilePortrait}>
             <img
               src="/me.jpeg"
               alt="Robert McKercher"
-              className={styles.photo}
+              className={styles.portraitImage}
             />
           </div>
-          <div className={styles.heroCentered}>
-            <div className={styles.name}>Robert McKercher</div>
-            <div className={styles.title}>PhD Candidate in Economics</div>
-            <div className={styles.subtitle}>Department of Economics, McMaster University</div>
-            <div className={styles.contact}>
+          <div className={styles.profileInfo}>
+            <h1 className={styles.profileName}>Robert McKercher</h1>
+            <p className={styles.profileRole}>PhD Candidate in Economics</p>
+            <p className={styles.profileAffiliation}>Department of Economics, McMaster University</p>
+            
+            <div className={styles.contactInfo}>
+              <p><strong>Email:</strong> <a href="mailto:mckerchr@mcmaster.ca">mckerchr@mcmaster.ca</a></p>
+              <p><strong>Office:</strong> Kenneth Taylor Hall (KTH), Room 706</p>
               <p>
-                <strong>Email:</strong> mckerchr@mcmaster.ca
-              </p>
-              <p>
-                <strong>Office:</strong> Kenneth Taylor Hall (KTH), Room 706
-              </p>
-              <p>
-                <strong>Department of Economics</strong>
-                <br />
-                McMaster University
-                <br />
-                1280 Main Street West
-                <br />
+                <strong>Address:</strong><br />
+                Department of Economics<br />
+                McMaster University<br />
+                1280 Main Street West<br />
                 Hamilton, Ontario, Canada L8S 4M4
               </p>
             </div>
+
+            <div className={styles.education}>
+              <h3 className={styles.educationHeading}>Education</h3>
+              <ul className={styles.educationList}>
+                <li><strong>PhD in Economics</strong> (in progress) – McMaster University</li>
+                <li><strong>Master of Arts in Economics</strong> – McMaster University</li>
+                <li><strong>Bachelor of Honours in Economics</strong> – McMaster University</li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* About Section */}
-        <div className={styles.section}>
-          <div className={styles.sectionTitle}>About Me</div>
-          <p className={styles.bioText}>
+        <section className={styles.aboutSection}>
+          <h2 className={styles.aboutHeading}>About</h2>
+          <p className={styles.aboutText}>
             [Brief bio goes here]
           </p>
           <button
@@ -266,11 +270,11 @@ const Home: NextPage = () => {
               </p>
             </div>
           )}
-        </div>
+        </section>
 
         {/* Job Market Paper Section */}
-        <div id="research" className={styles.section}>
-          <div className={styles.sectionTitle}>Job Market Paper</div>
+        <section id="research" className={styles.researchSection}>
+          <h2 className={styles.sectionHeading}>Job Market Paper</h2>
           <div className={styles.paper}>
             <div className={styles.paperTitle}>{jobMarketPaper.title}</div>
             {jobMarketPaper.authors && <div className={styles.paperAuthors}>{jobMarketPaper.authors}</div>}
@@ -295,11 +299,11 @@ const Home: NextPage = () => {
               )}
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Working Papers Section */}
-        <div className={styles.section}>
-          <div className={styles.sectionTitle}>Working Papers</div>
+        <section className={styles.researchSection}>
+          <h2 className={styles.sectionHeading}>Working Papers</h2>
           <div className={styles.papersContainer}>
             {workingPapers.map((paper) => (
               <div key={paper.id} className={styles.paper}>
@@ -328,12 +332,12 @@ const Home: NextPage = () => {
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Footer */}
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
           <p>&copy; {new Date().getFullYear()} Robert McKercher. All rights reserved.</p>
-        </div>
+        </footer>
       </div>
 
       <RequestModal
