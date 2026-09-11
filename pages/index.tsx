@@ -26,7 +26,9 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
-    links: [],
+    links: [
+      { text: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
+    ],
   },
   {
     id: 3,
