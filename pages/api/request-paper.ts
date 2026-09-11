@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import emailjs from '@emailjs/nodejs';
+import emailjs from '@emailjs/browser';
 
 type ResponseData = {
   message: string;
@@ -25,7 +25,6 @@ export default async function handler(
     // Initialize EmailJS
     emailjs.init({
       publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
-      privateKey: process.env.EMAILJS_PRIVATE_KEY || '',
     });
 
     // Send email via EmailJS
