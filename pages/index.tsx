@@ -195,11 +195,11 @@ const PaperComponent: React.FC<{
         </details>
       )}
       
-      <div className={styles.paperLinks}>
+      <div className={styles.paperActions}>
         {paper.links && paper.links.length > 0 && (
           <>
             {paper.links.map((link, index) => (
-              <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
+              <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className={styles.actionLink}>
                 {link.text}
               </a>
             ))}
@@ -207,7 +207,7 @@ const PaperComponent: React.FC<{
         )}
         {paper.requestable && (
           <button
-            className={styles.requestButton}
+            className={styles.actionButton}
             onClick={() => onRequestModal(paper.title)}
           >
             Paper Available Upon Request
