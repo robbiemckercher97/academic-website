@@ -24,6 +24,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [institution, setInstitution] = useState('');
+  const [additionalNote, setAdditionalNote] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -43,6 +44,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
           requesterName: name,
           requesterEmail: email,
           requesterInstitution: institution,
+          additionalNote: additionalNote,
         }),
       });
 
@@ -51,6 +53,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
         setName('');
         setEmail('');
         setInstitution('');
+        setAdditionalNote('');
         setTimeout(() => {
           onClose();
           setMessage('');
@@ -121,6 +124,17 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
             />
           </div>
 
+          <div className={styles.formGroup}>
+            <label htmlFor="additionalNote">Additional Note (Optional)</label>
+            <textarea
+              id="additionalNote"
+              value={additionalNote}
+              onChange={(e) => setAdditionalNote(e.target.value)}
+              placeholder="Add any additional information or message"
+              rows={4}
+            />
+          </div>
+
           <button type="submit" className={styles.submitButton} disabled={loading}>
             {loading ? 'Sending...' : 'Send Request'}
           </button>
@@ -147,7 +161,7 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
-    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some provinces lowering their marginal and average tax rates more than others, particularly for top earners. Using a difference-in-differences design, we estimate a population stock-elasticity with respect to the net-of-average-tax rate of about 2.5-3 for young, unmarried high-income individuals. The estimates for older and married individuals are smaller and mostly statistically insignificant. We find that the population stock elasticity estimates are driven by a reduction the likelihood that young, unmarried and high-income individuals emigrate from their province of residence (i.e. out-migration) rather than a change to in-migration. This suggests that individuals react more strongly to tax changes in their home province rather than tax changes in other provinces.`,
+    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some[...]
     links: [
       { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
