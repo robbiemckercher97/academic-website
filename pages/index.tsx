@@ -307,7 +307,7 @@ const Home: NextPage = () => {
             <div className={styles.education}>
               <h3 className={styles.educationHeading}>Education</h3>
               <ul className={styles.educationList}>
-                <li><strong>PhD Economics</strong> (in progress) – McMaster University</li>
+                <li><strong>PhD Economics</strong> – McMaster University(2021-2027*)</li>
                 <li><strong>M.A. Economics</strong> – McMaster University (2021)</li>
                 <li><strong>B.A. Honours Economics</strong> – Wilfrid Laurier University (2019)</li>
               </ul>
