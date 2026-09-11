@@ -319,7 +319,7 @@ const Home: NextPage = () => {
         <section className={styles.aboutSection}>
           <h2 className={styles.aboutHeading}>About</h2>
           <p className={styles.aboutText}>
-            [Brief bio goes here]
+            I am an Economics Ph.D. candidate at McMaster University and am on the 2026–27 academic job market. My research focuses on questions in public finance, using empirical methods from applied microeconomics alongside experimental methods. I study how personal tax systems influence individual behaviour, with particular attention to labour supply, migration and tax avoidance.
           </p>
           <button
             className={styles.expandButton}
