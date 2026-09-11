@@ -66,8 +66,8 @@
   letter-spacing: -0.5px;
 }
 
-/* Hero / About Section */
-.heroSection {
+/* Hero Layout - Image and Info Side by Side */
+.heroLayout {
   display: flex;
   gap: 3rem;
   align-items: flex-start;
@@ -78,16 +78,33 @@
 
 .photoContainer {
   flex-shrink: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  width: 1544px;
+  height: 1158px;
 }
 
 .photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(45, 90, 61, 0.15);
+}
+
+.heroCentered {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Hero / About Section */
+.heroSection {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e0e8e0;
 }
 
 .bioContainer {
@@ -107,6 +124,13 @@
   color: #5a9a6d;
   margin-bottom: 1.5rem;
   font-weight: 500;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #2c3e2f;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .bioText {
@@ -277,14 +301,14 @@
     font-size: 0.85rem;
   }
 
-  .heroSection {
+  .heroLayout {
     flex-direction: column;
     gap: 1.5rem;
   }
 
   .photoContainer {
     width: 100%;
-    height: 400px;
+    height: auto;
   }
 
   .name {
