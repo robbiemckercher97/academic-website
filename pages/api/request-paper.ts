@@ -14,7 +14,7 @@ export default async function handler(
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { paperTitle, requesterName, requesterEmail, requesterInstitution } = req.body;
+  const { paperTitle, requesterName, requesterEmail, requesterInstitution, additionalNote } = req.body;
 
   // Validate required fields
   if (!paperTitle || !requesterName || !requesterEmail) {
@@ -44,6 +44,7 @@ export default async function handler(
         <p><strong>Requester Name:</strong> ${requesterName}</p>
         <p><strong>Requester Email:</strong> ${requesterEmail}</p>
         <p><strong>Institution:</strong> ${requesterInstitution || 'Not provided'}</p>
+        ${additionalNote ? `<p><strong>Additional Note:</strong></p><p>${additionalNote}</p>` : ''}
         <p>Please send the paper to the requester at your earliest convenience.</p>
       `,
     };
