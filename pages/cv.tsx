@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 const CV: NextPage = () => {
@@ -13,52 +12,20 @@ const CV: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        <div className={styles.navContainer}>
-          <div className={styles.navBrand}>
-            <Link href="/">
-              <a>Robert McKercher</a>
-            </Link>
-          </div>
-          <ul className={styles.navLinks}>
-            <li>
-              <Link href="/">
-                <a>Research</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/cv">
-                <a>CV</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <div className={styles.container}>
-        {/* CV Section */}
-        <div className={styles.section}>
-          <div className={styles.sectionTitle}>Curriculum Vitae</div>
-          <div className={styles.cvSection}>
-            <a href="/McKercher_CV_2026.pdf" className={styles.cvButton} download>
-              Download CV (PDF)
-            </a>
-          </div>
-
-          {/* Embedded PDF viewer */}
-          <div className={styles.pdfContainer}>
-            <iframe
-              src="/McKercher_CV_2026.pdf#toolbar=1"
-              className={styles.pdfViewer}
-              title="CV - Robert McKercher"
-            />
-          </div>
+      <div className={styles.cvPageContainer}>
+        <div className={styles.cvHeader}>
+          <a href="/McKercher_CV_2026.pdf" className={styles.cvDownloadButton} download>
+            Download CV
+          </a>
         </div>
 
-        {/* Footer */}
-        <div className={styles.footer}>
-          <p>&copy; {new Date().getFullYear()} Robert McKercher. All rights reserved.</p>
+        {/* Embedded PDF viewer - full page */}
+        <div className={styles.cvFullPage}>
+          <iframe
+            src="/McKercher_CV_2026.pdf#toolbar=1"
+            className={styles.cvFullPageViewer}
+            title="CV - Robert McKercher"
+          />
         </div>
       </div>
     </>
