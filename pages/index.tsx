@@ -13,6 +13,110 @@ interface Paper {
   requestable?: boolean;
 }
 
+interface RequestModalProps {
+  isOpen: boolean;
+  paperTitle: string;
+  onClose: () => void;
+}
+
+const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/request-paper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          paperTitle,
+          requesterName: name,
+          requesterEmail: email,
+        }),
+      });
+
+      if (response.ok) {
+        setMessage('✓ Request sent successfully!');
+        setName('');
+        setEmail('');
+        setTimeout(() => {
+          onClose();
+          setMessage('');
+        }, 2000);
+      } else {
+        setMessage('Error sending request. Please try again.');
+      }
+    } catch (error) {
+      setMessage('Error sending request. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className={styles.modalOverlay}>
+      <div className={styles.modal}>
+        <button className={styles.closeButton} onClick={onClose}>×</button>
+        <h2 className={styles.modalTitle}>Request Paper</h2>
+        
+        <div className={styles.paperTitleDisplay}>{paperTitle}</div>
+        
+        <div className={styles.messagePreview}>
+          <p><strong>Message to be sent:</strong></p>
+          <div className={styles.previewText}>
+            <p>Hello,</p>
+            <p>I would like to request a copy of the following paper:</p>
+            <p style={{ fontStyle: 'italic' }}>"{paperTitle}"</p>
+            <p>Thank you,<br />{name || '[Your Name]'}</p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className={styles.requestForm}>
+          <div className={styles.formGroup}>
+            <label htmlFor="name">Your Name</label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="email">Your Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <button type="submit" className={styles.submitButton} disabled={loading}>
+            {loading ? 'Sending...' : 'Send Request'}
+          </button>
+
+          {message && <p className={styles.formMessage}>{message}</p>}
+        </form>
+      </div>
+    </div>
+  );
+};
+
 const jobMarketPaper: Paper = {
   id: 1,
   title: 'Dividend Taxation and Income Shifting within the Family',
@@ -52,6 +156,8 @@ const workingPapers: Paper[] = [
 
 const Home: NextPage = () => {
   const [expandedBio, setExpandedBio] = useState(false);
+  const [requestModalOpen, setRequestModalOpen] = useState(false);
+  const [selectedPaperTitle, setSelectedPaperTitle] = useState('');
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -60,10 +166,9 @@ const Home: NextPage = () => {
     }
   };
 
-  const requestPaper = (paperTitle: string) => {
-    const subject = encodeURIComponent('Request for Paper');
-    const body = encodeURIComponent(`Hello,\n\nI would like to request a copy of the following paper:\n\n"${paperTitle}"\n\nThank you,`);
-    window.location.href = `mailto:mckerchr@mcmaster.ca?subject=${subject}&body=${body}`;
+  const openRequestModal = (paperTitle: string) => {
+    setSelectedPaperTitle(paperTitle);
+    setRequestModalOpen(true);
   };
 
   return (
@@ -169,7 +274,7 @@ const Home: NextPage = () => {
               {jobMarketPaper.requestable && (
                 <button
                   className={styles.requestButton}
-                  onClick={() => requestPaper(jobMarketPaper.title)}
+                  onClick={() => openRequestModal(jobMarketPaper.title)}
                 >
                   Paper Available Upon Request
                 </button>
@@ -200,7 +305,7 @@ const Home: NextPage = () => {
                   {paper.requestable && (
                     <button
                       className={styles.requestButton}
-                      onClick={() => requestPaper(paper.title)}
+                      onClick={() => openRequestModal(paper.title)}
                     >
                       Paper Available Upon Request
                     </button>
@@ -216,6 +321,12 @@ const Home: NextPage = () => {
           <p>&copy; {new Date().getFullYear()} Robert McKercher. All rights reserved.</p>
         </div>
       </div>
+
+      <RequestModal
+        isOpen={requestModalOpen}
+        paperTitle={selectedPaperTitle}
+        onClose={() => setRequestModalOpen(false)}
+      />
     </>
   );
 };
