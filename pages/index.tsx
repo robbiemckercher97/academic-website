@@ -9,6 +9,7 @@ interface Paper {
   title: string;
   authors?: string;
   description?: string;
+  abstract?: string;
   links?: Array<{ text: string; url: string }>;
   requestable?: boolean;
 }
@@ -146,6 +147,7 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
+    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some provinces lowering their marginal and average tax rates more than others, particularly for top earners. Using a difference-in-differences design, we estimate a population stock-elasticity with respect to the net-of-average-tax rate of about 2.5-3 for young, unmarried high-income individuals. The estimates for older and married individuals are smaller and mostly statistically insignificant. We find that the population stock elasticity estimates are driven by a reduction the likelihood that young, unmarried and high-income individuals emigrate from their province of residence (i.e. out-migration) rather than a change to in-migration. This suggests that individuals react more strongly to tax changes in their home province rather than tax changes in other provinces.`,
     links: [
       { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
@@ -167,6 +169,54 @@ const workingPapers: Paper[] = [
     requestable: true,
   },
 ];
+
+const PaperComponent: React.FC<{
+  paper: Paper;
+  onRequestModal: (title: string) => void;
+}> = ({ paper, onRequestModal }) => {
+  const [abstractOpen, setAbstractOpen] = useState(false);
+  const hasAbstract = paper.abstract && paper.abstract.trim() !== '' && !paper.abstract.includes('[Description to be added]');
+
+  return (
+    <div className={styles.paper}>
+      <div className={styles.paperTitle}>{paper.title}</div>
+      {paper.authors && <div className={styles.paperAuthors}>{paper.authors}</div>}
+      {paper.description && <div className={styles.paperDescription}>{paper.description}</div>}
+      
+      {hasAbstract && (
+        <details className={styles.abstractDetails} open={abstractOpen} onToggle={() => setAbstractOpen(!abstractOpen)}>
+          <summary className={styles.abstractSummary}>
+            <span className={styles.abstractTriangle}></span>
+            <span className={styles.abstractLabel}>Show Abstract</span>
+          </summary>
+          <div className={styles.abstractContent}>
+            {paper.abstract}
+          </div>
+        </details>
+      )}
+      
+      <div className={styles.paperLinks}>
+        {paper.links && paper.links.length > 0 && (
+          <>
+            {paper.links.map((link, index) => (
+              <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.text}
+              </a>
+            ))}
+          </>
+        )}
+        {paper.requestable && (
+          <button
+            className={styles.requestButton}
+            onClick={() => onRequestModal(paper.title)}
+          >
+            Paper Available Upon Request
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Home: NextPage = () => {
   const [expandedBio, setExpandedBio] = useState(false);
@@ -214,7 +264,7 @@ const Home: NextPage = () => {
       </nav>
 
       <div className={styles.container}>
-        {/* Profile Section - Two Column */}
+        {/* Profile Section */}
         <section className={styles.profileSection}>
           <div className={styles.profilePortrait}>
             <img
@@ -275,30 +325,7 @@ const Home: NextPage = () => {
         {/* Job Market Paper Section */}
         <section id="research" className={styles.researchSection}>
           <h2 className={styles.sectionHeading}>Job Market Paper</h2>
-          <div className={styles.paper}>
-            <div className={styles.paperTitle}>{jobMarketPaper.title}</div>
-            {jobMarketPaper.authors && <div className={styles.paperAuthors}>{jobMarketPaper.authors}</div>}
-            {jobMarketPaper.description && <div className={styles.paperDescription}>{jobMarketPaper.description}</div>}
-            <div className={styles.paperLinks}>
-              {jobMarketPaper.links && jobMarketPaper.links.length > 0 && (
-                <>
-                  {jobMarketPaper.links.map((link, index) => (
-                    <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
-                      {link.text}
-                    </a>
-                  ))}
-                </>
-              )}
-              {jobMarketPaper.requestable && (
-                <button
-                  className={styles.requestButton}
-                  onClick={() => openRequestModal(jobMarketPaper.title)}
-                >
-                  Paper Available Upon Request
-                </button>
-              )}
-            </div>
-          </div>
+          <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} />
         </section>
 
         {/* Working Papers Section */}
@@ -306,30 +333,7 @@ const Home: NextPage = () => {
           <h2 className={styles.sectionHeading}>Working Papers</h2>
           <div className={styles.papersContainer}>
             {workingPapers.map((paper) => (
-              <div key={paper.id} className={styles.paper}>
-                <div className={styles.paperTitle}>{paper.title}</div>
-                {paper.authors && <div className={styles.paperAuthors}>{paper.authors}</div>}
-                {paper.description && <div className={styles.paperDescription}>{paper.description}</div>}
-                <div className={styles.paperLinks}>
-                  {paper.links && paper.links.length > 0 && (
-                    <>
-                      {paper.links.map((link, index) => (
-                        <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
-                          {link.text}
-                        </a>
-                      ))}
-                    </>
-                  )}
-                  {paper.requestable && (
-                    <button
-                      className={styles.requestButton}
-                      onClick={() => openRequestModal(paper.title)}
-                    >
-                      Paper Available Upon Request
-                    </button>
-                  )}
-                </div>
-              </div>
+              <PaperComponent key={paper.id} paper={paper} onRequestModal={openRequestModal} />
             ))}
           </div>
         </section>
