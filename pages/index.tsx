@@ -170,7 +170,7 @@ const workingPapers: Paper[] = [
     id: 3,
     title: 'The Impact of Government Social Spending on the Elasticity of Taxable Income',
     authors: '',
-    description: '[Description to be added]',
+    description: 'Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on how governments use tax revenue. This paper asks whether a similar relationship is visible in aggregate by examining whether top earners are less responsive to tax rates in countries that spend more on social programs. I construct a panel of 16 OECD countries from 1981 to 2019, combining top marginal tax rates, top 1% fiscal income shares, and government social expenditure. Using a model with country and year fixed effects, I estimate the ETI for individual countries and groups of countries and examine how it varies with total social spending and expenditure across social program categories. I find that top earners exhibit a lower ETI, on average, in countries with higher social spending. Differences in top income shares, top marginal tax rates, and tax administration expenses do not fully explain this relationship. My findings complement microeconomic evidence on how the use of local tax revenue influences tax compliance by showing that aggregate measures of tax sensitivity also vary with how governments spend revenue at the national level. This relationship is descriptive rather than causal, but it suggests that the behavioural costs of taxation may depend on not only the design of the tax system but also how governments spend the revenue it generates.',
     links: [],
     requestable: true,
   },
