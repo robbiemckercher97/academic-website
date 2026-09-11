@@ -41,7 +41,7 @@ const CV: NextPage = () => {
         <div className={styles.section}>
           <div className={styles.sectionTitle}>Curriculum Vitae</div>
           <div className={styles.cvSection}>
-            <a href="/McKercher_CV_2016.pdf" className={styles.cvButton} download>
+            <a href="/McKercher_CV_2026.pdf" className={styles.cvButton} download>
               Download CV (PDF)
             </a>
           </div>
@@ -49,7 +49,7 @@ const CV: NextPage = () => {
           {/* Embedded PDF viewer */}
           <div className={styles.pdfContainer}>
             <iframe
-              src="/McKercher_CV_2016.pdf#toolbar=1"
+              src="/McKercher_CV_2026.pdf#toolbar=1"
               className={styles.pdfViewer}
               title="CV - Robert McKercher"
             />
