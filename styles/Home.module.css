@@ -464,14 +464,24 @@
 }
 
 .closeButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  position: sticky;
+  top: 0;
+  right: 0;
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--color-primary);
+  z-index: 1001;
+  padding: 0.5rem;
+  margin: -0.5rem -0.5rem 1rem -0.5rem;
+  align-self: flex-end;
+  display: block;
+  float: right;
+}
+
+.closeButton:hover {
+  opacity: 0.7;
 }
 
 .modalTitle {
@@ -479,6 +489,7 @@
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 1rem;
+  clear: right;
 }
 
 .paperTitleDisplay {
@@ -534,7 +545,8 @@
   font-size: var(--font-button);
 }
 
-.formGroup input {
+.formGroup input,
+.formGroup textarea {
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -542,7 +554,8 @@
   font-family: inherit;
 }
 
-.formGroup input:focus {
+.formGroup input:focus,
+.formGroup textarea:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
