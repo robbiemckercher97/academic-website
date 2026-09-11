@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import emailjs from '@emailjs/browser';
+import nodemailer from 'nodemailer';
 
 type ResponseData = {
   message: string;
@@ -22,23 +22,55 @@ export default async function handler(
   }
 
   try {
-    // Initialize EmailJS
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
-
-    // Send email via EmailJS
-    const response = await emailjs.send('gmail', 'paper_request_template', {
-      to_email: process.env.NEXT_PUBLIC_RECIPIENT_EMAIL || 'mckerchr@mcmaster.ca',
-      person: requesterName,
-      paper: paperTitle,
-      email: requesterEmail,
-      institution: requesterInstitution || 'Not provided',
+    // Create a transporter using your email service
+    // For Gmail, you'll need an app-specific password
+    // See: https://support.google.com/accounts/answer/185833
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
     });
 
-    return res.status(200).json({ message: 'Email sent successfully' });
+    // Email to you (researcher)
+    const researcherEmail = {
+      from: process.env.EMAIL_USER,
+      to: 'mckerchr@mcmaster.ca',
+      subject: `Paper Request: ${paperTitle}`,
+      html: `
+        <h2>Paper Request Received</h2>
+        <p><strong>Paper:</strong> ${paperTitle}</p>
+        <p><strong>Requester Name:</strong> ${requesterName}</p>
+        <p><strong>Requester Email:</strong> ${requesterEmail}</p>
+        <p><strong>Institution:</strong> ${requesterInstitution || 'Not provided'}</p>
+        <p>Please send the paper to the requester at your earliest convenience.</p>
+      `,
+    };
+
+    // Confirmation email to requester
+    const requesterConfirmation = {
+      from: process.env.EMAIL_USER,
+      to: requesterEmail,
+      subject: 'Paper Request Received',
+      html: `
+        <p>Hello ${requesterName},</p>
+        <p>Thank you for requesting the paper:</p>
+        <p><em>"${paperTitle}"</em></p>
+        <p>Robert McKercher has been notified of your request and will send you a copy as soon as possible.</p>
+        <p>Best regards,<br/>Robert McKercher</p>
+      `,
+    };
+
+    // Send both emails
+    await transporter.sendMail(researcherEmail);
+    await transporter.sendMail(requesterConfirmation);
+
+    return res.status(200).json({ message: 'Paper request sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
     return res.status(500).json({
-      message: 'Failed to send email',
+      message: 'Failed to send request. Please try again later.',
       error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
