@@ -10,6 +10,7 @@ interface Paper {
   authors?: string;
   description?: string;
   links?: Array<{ text: string; url: string }>;
+  requestable?: boolean;
 }
 
 const jobMarketPaper: Paper = {
@@ -18,6 +19,7 @@ const jobMarketPaper: Paper = {
   authors: '',
   description: '[Description to be added]',
   links: [],
+  requestable: true,
 };
 
 const workingPapers: Paper[] = [
@@ -27,7 +29,7 @@ const workingPapers: Paper[] = [
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
     links: [
-      { text: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
+      { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
   },
   {
@@ -36,6 +38,7 @@ const workingPapers: Paper[] = [
     authors: '',
     description: '[Description to be added]',
     links: [],
+    requestable: true,
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ const workingPapers: Paper[] = [
     authors: 'With Li-Hsin Lin',
     description: '[Description to be added]',
     links: [],
+    requestable: true,
   },
 ];
 
@@ -54,6 +58,12 @@ const Home: NextPage = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const requestPaper = (paperTitle: string) => {
+    const subject = encodeURIComponent('Request for Paper');
+    const body = encodeURIComponent(`Hello,\n\nI would like to request a copy of the following paper:\n\n"${paperTitle}"\n\nThank you,`);
+    window.location.href = `mailto:mckerchr@mcmaster.ca?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -146,15 +156,25 @@ const Home: NextPage = () => {
             <div className={styles.paperTitle}>{jobMarketPaper.title}</div>
             {jobMarketPaper.authors && <div className={styles.paperAuthors}>{jobMarketPaper.authors}</div>}
             {jobMarketPaper.description && <div className={styles.paperDescription}>{jobMarketPaper.description}</div>}
-            {jobMarketPaper.links && jobMarketPaper.links.length > 0 && (
-              <div className={styles.paperLinks}>
-                {jobMarketPaper.links.map((link, index) => (
-                  <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
-                    {link.text}
-                  </a>
-                ))}
-              </div>
-            )}
+            <div className={styles.paperLinks}>
+              {jobMarketPaper.links && jobMarketPaper.links.length > 0 && (
+                <>
+                  {jobMarketPaper.links.map((link, index) => (
+                    <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
+                      {link.text}
+                    </a>
+                  ))}
+                </>
+              )}
+              {jobMarketPaper.requestable && (
+                <button
+                  className={styles.requestButton}
+                  onClick={() => requestPaper(jobMarketPaper.title)}
+                >
+                  Paper Available Upon Request
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -167,15 +187,25 @@ const Home: NextPage = () => {
                 <div className={styles.paperTitle}>{paper.title}</div>
                 {paper.authors && <div className={styles.paperAuthors}>{paper.authors}</div>}
                 {paper.description && <div className={styles.paperDescription}>{paper.description}</div>}
-                {paper.links && paper.links.length > 0 && (
-                  <div className={styles.paperLinks}>
-                    {paper.links.map((link, index) => (
-                      <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
-                        {link.text}
-                      </a>
-                    ))}
-                  </div>
-                )}
+                <div className={styles.paperLinks}>
+                  {paper.links && paper.links.length > 0 && (
+                    <>
+                      {paper.links.map((link, index) => (
+                        <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
+                          {link.text}
+                        </a>
+                      ))}
+                    </>
+                  )}
+                  {paper.requestable && (
+                    <button
+                      className={styles.requestButton}
+                      onClick={() => requestPaper(paper.title)}
+                    >
+                      Paper Available Upon Request
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
