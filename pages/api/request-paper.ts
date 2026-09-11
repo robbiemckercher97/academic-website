@@ -23,9 +23,7 @@ export default async function handler(
 
   try {
     // Initialize EmailJS
-    emailjs.init({
-      publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
-    });
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
 
     // Send email via EmailJS
     const response = await emailjs.send('gmail', 'paper_request_template', {
