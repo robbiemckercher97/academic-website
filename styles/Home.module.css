@@ -1,6 +1,51 @@
+/* ============================================
+   TYPOGRAPHY SCALE
+   ============================================
+   Desktop:
+   - Body/text: 18px, line-height 1.6
+   - Nav: 18px
+   - Buttons: 16px
+   - Nav Brand: 26px
+   - Profile Name: 40px
+   - Profile Subtitle: 22px
+   - Section Headings: 32px
+   - Paper Titles: 22px
+   - Secondary/Footer: 16px
+   
+   Mobile:
+   - Body/text: 17px
+   - Profile Name: 32px
+   - Section Headings: 26-28px
+   ============================================ */
+
+:root {
+  --font-body: 18px;
+  --font-body-mobile: 17px;
+  --font-nav: 18px;
+  --font-button: 16px;
+  --font-nav-brand: 26px;
+  --font-profile-name: 40px;
+  --font-profile-name-mobile: 32px;
+  --font-profile-subtitle: 22px;
+  --font-section-heading: 32px;
+  --font-section-heading-mobile: 27px;
+  --font-paper-title: 22px;
+  --font-secondary: 16px;
+  --line-height-body: 1.6;
+  --color-primary: #2d5a3d;
+  --color-accent: #5a9a6d;
+  --color-text: #2c3e2f;
+  --color-meta: #5a7a66;
+  --color-border: #e0e8e0;
+  --color-bg-light: #f5faf5;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
 .nav {
   background-color: white;
-  border-bottom: 1px solid #e0e8e0;
+  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -14,45 +59,60 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .navBrand {
-  font-size: 1.2rem;
+  font-size: var(--font-nav-brand);
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.navBrand a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .navLinks {
   display: flex;
   gap: 2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navLinks a {
-  color: #2c3e2f;
-  font-size: 0.95rem;
+  color: var(--color-text);
+  font-size: var(--font-nav);
   font-weight: 500;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
   transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
 }
 
 .navLinks a:hover {
-  color: #2d5a3d;
-  border-bottom-color: #2d5a3d;
-  text-decoration: none;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
-/* Main Container */
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
 .container {
   max-width: 1140px;
   margin: 0 auto;
   padding: 3rem 24px;
 }
 
-/* Profile Section - Two Column Layout */
+/* ============================================
+   PROFILE SECTION
+   ============================================ */
 .profileSection {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -80,47 +140,55 @@
 }
 
 .profileName {
-  font-size: 2.2rem;
+  font-size: var(--font-profile-name);
   font-weight: 700;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.7px;
+  line-height: 1.2;
 }
 
 .profileRole {
-  font-size: 1.1rem;
-  color: #5a9a6d;
+  font-size: var(--font-profile-subtitle);
+  color: var(--color-accent);
   margin: 0 0 0.5rem 0;
   font-weight: 500;
+  line-height: 1.3;
 }
 
 .profileAffiliation {
-  font-size: 0.95rem;
-  color: #2c3e2f;
+  font-size: var(--font-body);
+  color: var(--color-text);
   margin: 0 0 1.5rem 0;
   font-weight: 400;
+  line-height: var(--line-height-body);
 }
 
 .contactInfo {
-  font-size: 0.95rem;
-  color: #2c3e2f;
-  line-height: 1.6;
+  font-size: var(--font-body);
+  color: var(--color-text);
+  line-height: var(--line-height-body);
   margin-bottom: 1.5rem;
 }
 
 .contactInfo p {
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
+}
+
+.contactInfo strong {
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .contactInfo a {
-  color: #2d5a3d;
+  color: var(--color-primary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
 }
 
 .contactInfo a:hover {
-  border-bottom-color: #2d5a3d;
+  border-bottom-color: var(--color-primary);
 }
 
 .education {
@@ -128,11 +196,12 @@
 }
 
 .educationHeading {
-  font-size: 0.95rem;
+  font-size: var(--font-secondary);
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin: 0 0 0.75rem 0;
   letter-spacing: -0.5px;
+  text-transform: uppercase;
 }
 
 .educationList {
@@ -141,9 +210,9 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  color: #2c3e2f;
+  gap: 0.75rem;
+  font-size: var(--font-body);
+  color: var(--color-text);
   line-height: 1.5;
 }
 
@@ -153,56 +222,82 @@
 
 .educationList strong {
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
 }
 
-/* About Section */
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
 .aboutSection {
   margin-bottom: 60px;
 }
 
 .aboutHeading {
-  font-size: 1.8rem;
+  font-size: var(--font-section-heading);
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin: 0 0 1.5rem 0;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid #3d7a4d;
   letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .aboutText {
-  color: #2c3e2f;
+  color: var(--color-text);
   margin-bottom: 1.5rem;
   line-height: 1.7;
+  font-size: var(--font-body);
 }
 
 .expandedBio {
-  color: #2c3e2f;
+  color: var(--color-text);
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  font-size: var(--font-body);
 }
 
 .expandedBio p {
   margin: 0.75rem 0;
 }
 
-/* Research Sections */
+.expandButton {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  padding: 0;
+  font-size: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.expandButton:hover {
+  color: #1f3d2a;
+}
+
+/* ============================================
+   RESEARCH SECTIONS
+   ============================================ */
 .researchSection {
   margin-bottom: 60px;
 }
 
 .sectionHeading {
-  font-size: 1.8rem;
+  font-size: var(--font-section-heading);
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin: 0 0 2rem 0;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid #3d7a4d;
   letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
-/* Papers */
+/* ============================================
+   PAPERS & RESEARCH
+   ============================================ */
 .papersContainer {
   display: flex;
   flex-direction: column;
@@ -225,24 +320,24 @@
 
 .paperTitle {
   font-weight: 700;
-  font-size: 1.05rem;
-  color: #2d5a3d;
+  font-size: var(--font-paper-title);
+  color: var(--color-primary);
   margin: 0 0 0.5rem 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .paperAuthors {
   font-style: italic;
-  color: #5a7a66;
+  color: var(--color-meta);
   margin: 0 0 0.75rem 0;
-  font-size: 0.95rem;
+  font-size: var(--font-body);
 }
 
 .paperDescription {
-  color: #2c3e2f;
+  color: var(--color-text);
   margin: 0 0 1rem 0;
   line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: var(--font-body);
 }
 
 .paperLinks {
@@ -255,46 +350,31 @@
 .paperLinks a,
 .requestButton {
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: var(--font-button);
   font-weight: 500;
-  color: #2d5a3d;
+  color: var(--color-primary);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
   background: none;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .paperLinks a:hover,
 .requestButton:hover {
-  border-bottom-color: #2d5a3d;
+  border-bottom-color: var(--color-primary);
   color: #1f3d2a;
-  text-decoration: none;
 }
 
 .requestButton {
   padding: 0;
 }
 
-/* Buttons */
-.expandButton {
-  background: none;
-  border: none;
-  color: #2d5a3d;
-  padding: 0;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.expandButton:hover {
-  color: #1f3d2a;
-}
-
-/* Modal Styles */
+/* ============================================
+   MODAL & FORMS
+   ============================================ */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -328,23 +408,23 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #2d5a3d;
+  color: var(--color-primary);
 }
 
 .modalTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .paperTitleDisplay {
-  font-size: 0.95rem;
+  font-size: var(--font-body);
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background-color: #f5faf5;
+  background-color: var(--color-bg-light);
   border-radius: 6px;
 }
 
@@ -352,17 +432,25 @@
   margin-bottom: 1.5rem;
 }
 
+.messagePreview p {
+  font-size: var(--font-body);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
 .previewText {
-  background-color: #f5faf5;
+  background-color: var(--color-bg-light);
   padding: 1rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  color: #2c3e2f;
+  font-size: var(--font-body);
+  color: var(--color-text);
   line-height: 1.6;
 }
 
 .previewText p {
   margin: 0.5rem 0;
+  font-weight: normal;
 }
 
 .requestForm {
@@ -378,32 +466,32 @@
 
 .formGroup label {
   font-weight: 600;
-  color: #2d5a3d;
+  color: var(--color-primary);
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: var(--font-button);
 }
 
 .formGroup input {
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: var(--font-body);
   font-family: inherit;
 }
 
 .formGroup input:focus {
   outline: none;
-  border-color: #2d5a3d;
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
 }
 
 .submitButton {
-  background-color: #2d5a3d;
+  background-color: var(--color-primary);
   color: white;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: var(--font-button);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -420,26 +508,31 @@
 
 .formMessage {
   text-align: center;
-  color: #2d5a3d;
+  color: var(--color-primary);
   font-weight: 500;
   margin: 0;
+  font-size: var(--font-body);
 }
 
-/* Footer */
+/* ============================================
+   FOOTER
+   ============================================ */
 .footer {
   margin-top: 60px;
   padding-top: 2rem;
-  border-top: 1px solid #e0e8e0;
+  border-top: 1px solid var(--color-border);
   text-align: center;
   color: #888;
-  font-size: 0.9rem;
+  font-size: var(--font-secondary);
 }
 
-/* CV Styles */
+/* ============================================
+   CV PAGE
+   ============================================ */
 .cvPageWrapper {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 80px);
   overflow: hidden;
 }
 
@@ -455,18 +548,29 @@
   border: none;
 }
 
-/* Mobile Responsive */
+/* ============================================
+   MOBILE RESPONSIVE (≤768px)
+   ============================================ */
 @media (max-width: 768px) {
   .navContainer {
-    padding: 0 24px;
-  }
-
-  .navLinks {
+    padding: 0.75rem 24px;
+    flex-wrap: wrap;
     gap: 1rem;
   }
 
+  .navBrand {
+    font-size: 22px;
+    width: 100%;
+  }
+
+  .navLinks {
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .navLinks a {
-    font-size: 0.85rem;
+    font-size: 16px;
   }
 
   .container {
@@ -485,16 +589,42 @@
   }
 
   .profileName {
-    font-size: 1.8rem;
+    font-size: var(--font-profile-name-mobile);
   }
 
   .profileRole {
-    font-size: 1rem;
+    font-size: 20px;
+  }
+
+  .profileAffiliation {
+    font-size: var(--font-body-mobile);
+  }
+
+  .contactInfo {
+    font-size: var(--font-body-mobile);
+  }
+
+  .educationList {
+    font-size: var(--font-body-mobile);
+  }
+
+  .aboutText,
+  .expandedBio {
+    font-size: var(--font-body-mobile);
   }
 
   .aboutHeading,
   .sectionHeading {
-    font-size: 1.5rem;
+    font-size: var(--font-section-heading-mobile);
+  }
+
+  .paperTitle {
+    font-size: 20px;
+  }
+
+  .paperAuthors,
+  .paperDescription {
+    font-size: var(--font-body-mobile);
   }
 
   .paperLinks {
@@ -502,27 +632,60 @@
   }
 
   .cvPageWrapper {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 70px);
   }
 }
 
+/* ============================================
+   MOBILE RESPONSIVE (≤480px)
+   ============================================ */
 @media (max-width: 480px) {
   .navContainer,
   .container {
-    padding: 0 20px;
+    padding: 0.75rem 20px 1rem 20px;
+  }
+
+  .navBrand {
+    font-size: 20px;
+  }
+
+  .navLinks a {
+    font-size: 15px;
   }
 
   .profileName {
-    font-size: 1.5rem;
+    font-size: 28px;
+  }
+
+  .profileRole {
+    font-size: 18px;
   }
 
   .aboutHeading,
   .sectionHeading {
-    font-size: 1.3rem;
+    font-size: 24px;
+  }
+
+  .paperTitle {
+    font-size: 18px;
   }
 
   .contactInfo,
-  .educationList {
-    font-size: 0.9rem;
+  .educationList,
+  .aboutText,
+  .expandedBio,
+  .paperAuthors,
+  .paperDescription {
+    font-size: var(--font-body-mobile);
+  }
+
+  .paperLinks {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .paperLinks a,
+  .requestButton {
+    font-size: 15px;
   }
 }
