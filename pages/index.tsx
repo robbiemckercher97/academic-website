@@ -22,6 +22,7 @@ interface RequestModalProps {
 const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [institution, setInstitution] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -40,6 +41,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
           paperTitle,
           requesterName: name,
           requesterEmail: email,
+          requesterInstitution: institution,
         }),
       });
 
@@ -47,6 +49,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
         setMessage('✓ Request sent successfully!');
         setName('');
         setEmail('');
+        setInstitution('');
         setTimeout(() => {
           onClose();
           setMessage('');
@@ -83,7 +86,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
 
         <form onSubmit={handleSubmit} className={styles.requestForm}>
           <div className={styles.formGroup}>
-            <label htmlFor="name">Your Name</label>
+            <label htmlFor="name">Your Name *</label>
             <input
               id="name"
               type="text"
@@ -95,7 +98,7 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="email">Your Email</label>
+            <label htmlFor="email">Your Email *</label>
             <input
               id="email"
               type="email"
@@ -103,6 +106,17 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, paperTitle, onClose
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="Enter your email"
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="institution">Institution (Optional)</label>
+            <input
+              id="institution"
+              type="text"
+              value={institution}
+              onChange={(e) => setInstitution(e.target.value)}
+              placeholder="Enter your institution"
             />
           </div>
 
