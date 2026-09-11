@@ -15,7 +15,7 @@ interface Paper {
 const jobMarketPaper: Paper = {
   id: 1,
   title: 'Dividend Taxation and Income Shifting within the Family',
-  authors: 'Robert McKercher',
+  authors: '',
   description: '[Description to be added]',
   links: [],
 };
@@ -24,21 +24,21 @@ const workingPapers: Paper[] = [
   {
     id: 2,
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
-    authors: 'Robert McKercher, Adam Lavecchia, and Alisa Tazhitdinova',
-    description: '[Description to be added]',
+    authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
+    description: 'Reject and Resubmit, Journal of Public Economics',
     links: [],
   },
   {
     id: 3,
     title: 'The Impact of Government Social Spending on the Elasticity of Taxable Income',
-    authors: 'Robert McKercher',
+    authors: '',
     description: '[Description to be added]',
     links: [],
   },
   {
     id: 4,
     title: 'Labour Supply Responses to Marginal Tax Rates, Average Tax Rates, and Tax Progressivity',
-    authors: 'Robert McKercher and Li-Hsin Lin',
+    authors: 'With Li-Hsin Lin',
     description: '[Description to be added]',
     links: [],
   },
