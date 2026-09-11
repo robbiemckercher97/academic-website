@@ -81,10 +81,10 @@
 }
 
 .photo {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 0 4px 12px rgba(45, 90, 61, 0.15);
 }
 
@@ -166,6 +166,58 @@
   margin-top: 1.5rem;
   color: #666;
   font-size: 0.9rem;
+}
+
+/* CV Page - Full page layout */
+.cvPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cvHeader {
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e0e8e0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(45, 90, 61, 0.05);
+}
+
+.cvDownloadButton {
+  background-color: #2d5a3d;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 6px rgba(45, 90, 61, 0.15);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cvDownloadButton:hover {
+  background-color: #1f3d2a;
+  box-shadow: 0 3px 9px rgba(45, 90, 61, 0.25);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.cvFullPage {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.cvFullPageViewer {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* Research / Papers Section */
@@ -260,8 +312,8 @@
   }
 
   .photo {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 
   .name {
@@ -278,5 +330,14 @@
 
   .paperLinks {
     gap: 1rem;
+  }
+
+  .cvHeader {
+    padding: 0.75rem 1rem;
+  }
+
+  .cvDownloadButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }
