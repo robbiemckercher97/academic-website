@@ -123,6 +123,8 @@
 
 .profilePortrait {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .portraitImage {
@@ -132,6 +134,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(45, 90, 61, 0.15);
   object-fit: contain;
+  margin-bottom: 1.5rem;
 }
 
 .profileInfo {
@@ -198,7 +201,7 @@
 .educationHeading {
   font-size: var(--font-secondary);
   font-weight: 600;
-  color: #000;
+  color: var(--color-primary);
   margin: 0 0 0.75rem 0;
   letter-spacing: -0.5px;
   text-transform: uppercase;
@@ -222,7 +225,7 @@
 
 .educationList strong {
   font-weight: 600;
-  color: #000;
+  color: var(--color-primary);
 }
 
 /* ============================================
