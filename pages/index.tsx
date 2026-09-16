@@ -272,6 +272,11 @@ const Home: NextPage = () => {
               </a>
             </li>
             <li>
+              <a onClick={() => scrollToSection('teaching')} style={{ cursor: 'pointer' }}>
+                Teaching
+              </a>
+            </li>
+            <li>
               <Link href="/cv">
                 <a>CV</a>
               </Link>
@@ -358,7 +363,7 @@ const Home: NextPage = () => {
         </section>
 
         {/* Teaching Section */}
-        <section className={styles.teachingSection}>
+        <section id="teaching" className={styles.teachingSection}>
           <h2 className={styles.sectionHeading}>Teaching</h2>
           <div className={styles.teachingContainer}>
             <div className={styles.course}>
