@@ -500,6 +500,55 @@
 }
 
 /* ============================================
+   TEACHING SECTION
+   ============================================ */
+.teachingSection {
+  margin-bottom: 60px;
+}
+
+.teachingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.course {
+  padding: 1.5rem;
+  background: white;
+  border-left: 4px solid #3d7a4d;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(45, 90, 61, 0.08);
+  transition: all 0.3s ease;
+}
+
+.course:hover {
+  box-shadow: 0 4px 12px rgba(45, 90, 61, 0.15);
+  transform: translateX(4px);
+}
+
+.courseCode {
+  font-weight: 700;
+  font-size: var(--font-paper-title);
+  color: var(--color-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.courseRole {
+  font-style: italic;
+  color: var(--color-meta);
+  margin: 0 0 0.75rem 0;
+  font-size: var(--font-body);
+}
+
+.courseDetails {
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  font-size: var(--font-body);
+}
+
+/* ============================================
    MODAL & FORMS
    ============================================ */
 .modalOverlay {
@@ -783,6 +832,15 @@
     gap: 1rem;
   }
 
+  .courseCode {
+    font-size: 20px;
+  }
+
+  .courseRole,
+  .courseDetails {
+    font-size: var(--font-body-mobile);
+  }
+
   .cvPageWrapper {
     height: calc(100vh - 70px);
   }
@@ -848,5 +906,14 @@
   .paperLinks a,
   .actionButton {
     font-size: 15px;
+  }
+
+  .courseCode {
+    font-size: 18px;
+  }
+
+  .courseRole,
+  .courseDetails {
+    font-size: var(--font-body-mobile);
   }
 }
