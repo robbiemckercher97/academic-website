@@ -108,8 +108,8 @@ const CVPage: NextPage = () => {
   };
 
   const navigateTo = (section: string) => {
-    // Navigate to home page with anchor
-    window.location.href = `/#${section}`;
+    // Navigate to home page with anchor and offset for header
+    window.location.href = `/?scrollTo=${section}`;
   };
 
   return (
