@@ -190,9 +190,8 @@ const workingPapers: Paper[] = [
 const PaperComponent: React.FC<{
   paper: Paper;
   onRequestModal: (title: string) => void;
-  isJobMarketPaper?: boolean;
-}> = ({ paper, onRequestModal, isJobMarketPaper = false }) => {
-  const [abstractOpen, setAbstractOpen] = useState(isJobMarketPaper);
+}> = ({ paper, onRequestModal }) => {
+  const [abstractOpen, setAbstractOpen] = useState(false);
   const hasAbstract = paper.abstract && paper.abstract.trim() !== '' && !paper.abstract.includes('[Description to be added]');
 
   return (
@@ -202,7 +201,7 @@ const PaperComponent: React.FC<{
       {paper.description && <div className={styles.paperDescription}>{paper.description}</div>}
       
       {hasAbstract && (
-        <details className={styles.abstractDetails} open={abstractOpen} onToggle={() => setAbstractOpen(!abstractOpen)}>
+        <details className={styles.abstractDetails} onToggle={(e) => setAbstractOpen((e.target as HTMLDetailsElement).open)}>
           <summary className={styles.abstractSummary}>
             <span className={styles.abstractTriangle}></span>
             <span className={styles.abstractLabel}>{abstractOpen ? 'Hide Abstract' : 'Show Abstract'}</span>
@@ -343,7 +342,7 @@ const Home: NextPage = () => {
             {/* Job Market Paper - in right column */}
             <section id="research" className={styles.jobMarketPaperInline}>
               <h2 className={styles.sectionHeadingInline}>Job Market Paper</h2>
-              <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} isJobMarketPaper={true} />
+              <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} />
             </section>
           </div>
         </section>
