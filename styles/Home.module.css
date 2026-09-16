@@ -116,8 +116,8 @@
 
 .profileSection {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 45px;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
   align-items: start;
   margin-bottom: 60px;
 }
@@ -131,8 +131,6 @@
 
 .profilePortrait {
   flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .portraitImage {
@@ -142,7 +140,6 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(45, 90, 61, 0.15);
   object-fit: contain;
-  margin-bottom: 1.5rem;
 }
 
 .profileInfo {
@@ -176,61 +173,8 @@
 .profileAffiliation {
   font-size: var(--font-body);
   color: var(--color-text);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 2rem 0;
   font-weight: 400;
-  line-height: var(--line-height-body);
-}
-
-.contactInfo {
-  font-size: var(--font-body);
-  color: var(--color-text);
-  line-height: var(--line-height-body);
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
-}
-
-.contactInfo p {
-  margin: 0.5rem 0;
-}
-
-.contactInfo strong {
-  font-weight: 600;
-  color: #000;
-}
-
-.contactInfo a {
-  color: var(--color-primary);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.contactInfo a:hover {
-  border-bottom-color: var(--color-primary);
-}
-
-.education {
-  margin-top: 0.75rem;
-}
-
-.educationHeading {
-  font-size: var(--font-secondary);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin: 0 0 0.5rem 0;
-  letter-spacing: -0.3px;
-}
-
-.educationList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.educationList li {
-  font-size: var(--font-body);
-  color: var(--color-text);
-  margin-bottom: 0.3rem;
   line-height: var(--line-height-body);
 }
 
