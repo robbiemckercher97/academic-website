@@ -272,14 +272,14 @@ const Home: NextPage = () => {
               </a>
             </li>
             <li>
-              <a onClick={() => scrollToSection('teaching')} style={{ cursor: 'pointer' }}>
-                Teaching
-              </a>
-            </li>
-            <li>
               <Link href="/cv">
                 <a>CV</a>
               </Link>
+            </li>
+            <li>
+              <a onClick={() => scrollToSection('teaching')} style={{ cursor: 'pointer' }}>
+                Teaching
+              </a>
             </li>
           </ul>
         </div>
