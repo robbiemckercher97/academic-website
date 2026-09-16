@@ -272,6 +272,11 @@ const Home: NextPage = () => {
               </a>
             </li>
             <li>
+              <a onClick={() => scrollToSection('jmp')} style={{ cursor: 'pointer' }}>
+                JMP
+              </a>
+            </li>
+            <li>
               <Link href="/cv">
                 <a>CV</a>
               </Link>
@@ -345,7 +350,7 @@ const Home: NextPage = () => {
             </section>
 
             {/* Job Market Paper - in right column */}
-            <section id="research" className={styles.jobMarketPaperInline}>
+            <section id="jmp" className={styles.jobMarketPaperInline}>
               <h2 className={styles.sectionHeadingInline}>Job Market Paper</h2>
               <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} />
             </section>
@@ -353,7 +358,7 @@ const Home: NextPage = () => {
         </section>
 
         {/* Working Papers Section */}
-        <section className={styles.researchSection}>
+        <section id="research" className={styles.researchSection}>
           <h2 className={styles.sectionHeading}>Working Papers</h2>
           <div className={styles.papersContainer}>
             {workingPapers.map((paper) => (
