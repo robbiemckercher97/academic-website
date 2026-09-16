@@ -107,16 +107,9 @@ const CVPage: NextPage = () => {
     document.body.removeChild(link);
   };
 
-  const scrollToSection = (sectionId: string, offset: number = 0) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
+  const navigateTo = (section: string) => {
+    // Navigate to home page with anchor
+    window.location.href = `/#${section}`;
   };
 
   return (
@@ -138,19 +131,19 @@ const CVPage: NextPage = () => {
           </div>
           <ul className={styles.navLinks}>
             <li>
-              <Link href="/">
-                <a>About</a>
-              </Link>
+              <a onClick={() => navigateTo('about')} style={{ cursor: 'pointer' }}>
+                About
+              </a>
             </li>
             <li>
-              <Link href="/">
-                <a>Research</a>
-              </Link>
+              <a onClick={() => navigateTo('research')} style={{ cursor: 'pointer' }}>
+                Research
+              </a>
             </li>
             <li>
-              <Link href="/">
-                <a>JMP</a>
-              </Link>
+              <a onClick={() => navigateTo('jmp')} style={{ cursor: 'pointer' }}>
+                JMP
+              </a>
             </li>
             <li>
               <Link href="/cv">
@@ -158,9 +151,9 @@ const CVPage: NextPage = () => {
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a>Teaching</a>
-              </Link>
+              <a onClick={() => navigateTo('teaching')} style={{ cursor: 'pointer' }}>
+                Teaching
+              </a>
             </li>
           </ul>
         </div>
