@@ -353,7 +353,7 @@ const Home: NextPage = () => {
               {expandedBio && (
                 <div className={styles.expandedBio}>
                   <p>
-                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with this transition and find the blend of methodological rigor and policy relevance that characterizes public finance research to be deeply satisfying. Outside of research, I enjoy hiking, playing guitar, and exploring new coffee shops in Hamilton. I am always excited to discuss research ideas, methodological questions, or potential collaborations.
+                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with the toolkit I have developed. If existing data are insufficient to pursue an idea or identify an underlying mechanism, I can always design an experiment, collect my own data in the lab, and figure out what's driving the behaviour. I am particularly interested in how tax policy affects tax avoidance and evasion and how fiscal policy can reduce income inequality. My prior and current research explores how tax systems influence the choices individuals make to avoid taxation. My future research will extend this agenda to tax evasion and optimal enforcement. I plan to study the joint design of tax schedules and audit policy when audit costs and expected revenue vary across the income distribution, examining how governments should allocate limited enforcement resources.
                   </p>
                 </div>
               )}
