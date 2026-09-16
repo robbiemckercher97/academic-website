@@ -162,7 +162,7 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
-    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some provinces gaining tax-setting power from the federal government. This reform created quasi-experimental variation in tax rates across provinces and years. Using administrative tax data from Statistics Canada, we employ a difference-in-differences approach to estimate the elasticity of inter-provincial migration with respect to the net-of-tax rate. We find statistically significant evidence that higher taxes reduce inter-provincial migration, with an elasticity of approximately 0.15. This suggests that a 10% increase in the tax rate reduces migration flows by 1.5%. Our results have important implications for tax competition between provinces and the efficiency of the tax system.`,
+    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some[...]
     links: [
       { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
@@ -172,7 +172,7 @@ const workingPapers: Paper[] = [
     title: 'The Impact of Government Social Spending on the Elasticity of Taxable Income',
     authors: '',
     description: 'Working Paper',
-    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on social preferences and perceptions of government. In this paper, I investigate whether the level of government social spending affects the ETI. I employ a quasi-experimental research design using administrative tax data and exploit variation in social spending across provinces and over time in Canada. Using a generalized difference-in-differences framework, I estimate how changes in social spending affect the responsiveness of taxable income to marginal tax rate changes. The results suggest that higher government social spending is associated with lower ETI, indicating that individuals are less responsive to tax rate changes when they perceive greater government provision of public services. This finding has important implications for optimal tax policy and government spending decisions.`,
+    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on[...]
     links: [],
     requestable: true,
   },
@@ -181,7 +181,7 @@ const workingPapers: Paper[] = [
     title: 'Labour Supply Responses to Marginal Tax Rates, Average Tax Rates, and Tax Progressivity',
     authors: 'With Li-Hsin Lin',
     description: 'Working Paper',
-    abstract: `Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, however, suggests that some individuals also respond to average tax rates and the progressivity of the tax system. In this paper, we develop a theoretical model that allows for both rational responses to marginal rates and behavioural responses to average rates and progressivity. We then test these predictions using quasi-experimental variation in tax rates created by Canadian tax reforms. Using a comprehensive dataset of tax records and labour force surveys, we estimate separate responses to marginal rates, average rates, and progressivity. We find evidence that labour supply responds significantly to marginal tax rates, but also find smaller but non-negligible responses to average tax rates. These results suggest that labour supply responses are not fully captured by standard models that only consider marginal incentives.`,
+    abstract: `Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, howeve[...]
     links: [],
     requestable: true,
   },
@@ -252,13 +252,6 @@ const Home: NextPage = () => {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   const openRequestModal = (paperTitle: string) => {
     setSelectedPaperTitle(paperTitle);
     setRequestModalOpen(true);
@@ -279,7 +272,7 @@ const Home: NextPage = () => {
           <div className={styles.navBrand}>Robert McKercher</div>
           <ul className={styles.navLinks}>
             <li>
-              <a onClick={scrollToTop} style={{ cursor: 'pointer' }}>
+              <a onClick={() => scrollToSection('about', 150)} style={{ cursor: 'pointer' }}>
                 About
               </a>
             </li>
@@ -346,10 +339,10 @@ const Home: NextPage = () => {
             <p className={styles.profileAffiliation}>Department of Economics, McMaster University</p>
 
             {/* About Section - in right column */}
-            <section className={styles.aboutSectionInline}>
+            <section id="about" className={styles.aboutSectionInline}>
               <h2 className={styles.aboutHeadingInline}>About</h2>
               <p className={styles.aboutText}>
-                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods from applied microeconomics alongside experimental methods. I study how personal tax systems influence individual behaviour, with particular attention to labour supply, migration and tax avoidance.
+                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical meth[...]
               </p>
               <button
                 className={styles.expandButton}
@@ -360,7 +353,7 @@ const Home: NextPage = () => {
               {expandedBio && (
                 <div className={styles.expandedBio}>
                   <p>
-                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with the toolkit I have developed. If existing data are insufficient to pursue an idea or identify an underlying mechanism, I can always design an experiment, collect my own data in the lab, and figure out what's driving the behaviour. I am particularly interested in how tax policy affects tax avoidance and evasion and how fiscal policy can reduce income inequality. My prior and current research explores how tax systems influence the choices individuals make to avoid taxation. My future research will extend this agenda to tax evasion and optimal enforcement. I plan to study the joint design of tax schedules and audit policy when audit costs and expected revenue vary across the income distribution, examining how governments should allocate limited enforcement resources.
+                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy wi[...]
                   </p>
                 </div>
               )}
