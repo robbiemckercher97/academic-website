@@ -342,7 +342,7 @@ const Home: NextPage = () => {
             <section id="about" className={styles.aboutSectionInline}>
               <h2 className={styles.aboutHeadingInline}>About</h2>
               <p className={styles.aboutText}>
-                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical meth[...]
+                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods, with a particular emphasis on the behavioral responses to taxation and the role of government spending. I am interested in understanding how taxes affect economic decisions, and how public policy can be designed to achieve desired outcomes while minimizing efficiency costs.
               </p>
               <button
                 className={styles.expandButton}
@@ -353,7 +353,7 @@ const Home: NextPage = () => {
               {expandedBio && (
                 <div className={styles.expandedBio}>
                   <p>
-                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy wi[...]
+                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with this transition and find the blend of methodological rigor and policy relevance that characterizes public finance research to be deeply satisfying. Outside of research, I enjoy hiking, playing guitar, and exploring new coffee shops in Hamilton. I am always excited to discuss research ideas, methodological questions, or potential collaborations.
                   </p>
                 </div>
               )}
