@@ -195,14 +195,14 @@
 }
 
 .education {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .educationHeading {
   font-size: var(--font-body);
   font-weight: 600;
   color: #000;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .educationList {
