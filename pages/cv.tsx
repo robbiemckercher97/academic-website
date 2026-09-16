@@ -131,9 +131,9 @@ const CVPage: NextPage = () => {
           </div>
           <ul className={styles.navLinks}>
             <li>
-             <section id="about" style={{ scrollMarginTop: '150px' }}>
-                {/* Existing About content */}
-              </section>
+               <a onClick={() => navigateTo('about')} style={{ cursor: 'pointer' }}>
+                About
+              </a>
             </li>
             <li>
               <a onClick={() => navigateTo('research')} style={{ cursor: 'pointer' }}>
