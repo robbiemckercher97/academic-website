@@ -252,6 +252,13 @@ const Home: NextPage = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const openRequestModal = (paperTitle: string) => {
     setSelectedPaperTitle(paperTitle);
     setRequestModalOpen(true);
@@ -271,6 +278,11 @@ const Home: NextPage = () => {
         <div className={styles.navContainer}>
           <div className={styles.navBrand}>Robert McKercher</div>
           <ul className={styles.navLinks}>
+            <li>
+              <a onClick={scrollToTop} style={{ cursor: 'pointer' }}>
+                About
+              </a>
+            </li>
             <li>
               <a onClick={() => scrollToSection('research', 150)} style={{ cursor: 'pointer' }}>
                 Research
