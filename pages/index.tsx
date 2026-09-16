@@ -240,10 +240,15 @@ const Home: NextPage = () => {
   const [requestModalOpen, setRequestModalOpen] = useState(false);
   const [selectedPaperTitle, setSelectedPaperTitle] = useState('');
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string, offset: number = 0) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -267,12 +272,12 @@ const Home: NextPage = () => {
           <div className={styles.navBrand}>Robert McKercher</div>
           <ul className={styles.navLinks}>
             <li>
-              <a onClick={() => scrollToSection('research')} style={{ cursor: 'pointer' }}>
+              <a onClick={() => scrollToSection('research', 150)} style={{ cursor: 'pointer' }}>
                 Research
               </a>
             </li>
             <li>
-              <a onClick={() => scrollToSection('jmp')} style={{ cursor: 'pointer' }}>
+              <a onClick={() => scrollToSection('jmp', 150)} style={{ cursor: 'pointer' }}>
                 JMP
               </a>
             </li>
@@ -282,7 +287,7 @@ const Home: NextPage = () => {
               </Link>
             </li>
             <li>
-              <a onClick={() => scrollToSection('teaching')} style={{ cursor: 'pointer' }}>
+              <a onClick={() => scrollToSection('teaching', 150)} style={{ cursor: 'pointer' }}>
                 Teaching
               </a>
             </li>
