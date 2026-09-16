@@ -162,7 +162,7 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
-    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some[...]
+    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some[...]`,
     links: [
       { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
@@ -172,7 +172,7 @@ const workingPapers: Paper[] = [
     title: 'The Impact of Government Social Spending on the Elasticity of Taxable Income',
     authors: '',
     description: 'Working Paper',
-    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on[...]
+    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on[...]`,
     links: [],
     requestable: true,
   },
@@ -181,7 +181,7 @@ const workingPapers: Paper[] = [
     title: 'Labour Supply Responses to Marginal Tax Rates, Average Tax Rates, and Tax Progressivity',
     authors: 'With Li-Hsin Lin',
     description: 'Working Paper',
-    abstract: `Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, howeve[...]
+    abstract: `Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, howeve[...]`,
     links: [],
     requestable: true,
   },
