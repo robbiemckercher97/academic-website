@@ -162,7 +162,7 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
-    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some[...]
+    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some provinces having higher provincial income tax rates than others. Using administrative tax data and a differences-in-differences framework, we estimate the elasticity of inter-provincial migration with respect to the net-of-tax rate. We find that a 10% increase in the net-of-tax rate leads to approximately 8% more in-migration relative to baseline. The effect is driven primarily by high-income earners and those in mobile occupations. We also find evidence of asymmetries in migration responses: the response to tax increases is larger than the response to equivalent tax decreases, suggesting that migration decisions are not purely based on forward-looking tax considerations but may be influenced by other factors correlated with tax changes.`,
     links: [
       { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
@@ -172,7 +172,7 @@ const workingPapers: Paper[] = [
     title: 'The Impact of Government Social Spending on the Elasticity of Taxable Income',
     authors: '',
     description: 'Working Paper',
-    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on[...]
+    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on social preferences and perceptions of government. In this paper, I investigate whether the level of government social spending affects the ETI. I employ a quasi-experimental research design using administrative tax data and exploit variation in social spending across provinces and over time in Canada. Using a generalized difference-in-differences framework, I estimate how changes in social spending affect the responsiveness of taxable income to marginal tax rate changes. The results suggest that higher government social spending is associated with lower ETI, indicating that individuals are less responsive to tax rate changes when they perceive greater government provision of public services. This finding has important implications for optimal tax policy and government spending decisions.`,
     links: [],
     requestable: true,
   },
@@ -181,7 +181,7 @@ const workingPapers: Paper[] = [
     title: 'Labour Supply Responses to Marginal Tax Rates, Average Tax Rates, and Tax Progressivity',
     authors: 'With Li-Hsin Lin',
     description: 'Working Paper',
-    abstract: `Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, howeve[...]
+    abstract: `Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, however, suggests that some individuals also respond to average tax rates and the progressivity of the tax system. In this paper, we develop a theoretical model that allows for both rational responses to marginal rates and behavioural responses to average rates and progressivity. We then test these predictions using quasi-experimental variation in tax rates created by Canadian tax reforms. Using a comprehensive dataset of tax records and labour force surveys, we estimate separate responses to marginal rates, average rates, and progressivity. We find evidence that labour supply responds significantly to marginal tax rates, but also find smaller but non-negligible responses to average tax rates. These results suggest that labour supply responses are not fully captured by standard models that only consider marginal incentives.`,
     links: [],
     requestable: true,
   },
