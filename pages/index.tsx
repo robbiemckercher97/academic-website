@@ -162,7 +162,7 @@ const workingPapers: Paper[] = [
     title: 'Should I Stay or Should I Go? The Impact of Taxation on Canadian Inter-Provincial Migration',
     authors: 'With Adam Lavecchia and Alisa Tazhitdinova',
     description: 'Reject and Resubmit, Journal of Public Economics',
-    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some provinces lowering their marginal and average tax rates more than others, particularly for top earners. Using a difference-in-differences design, we estimate a population stock-elasticity with respect to the net-of-average-tax rate of about 2.5-3 for young, unmarried high-income individuals. The estimates for older and married individuals are smaller and mostly statistically insignificant. We find that the population stock elasticity estimates are driven by a reduction the likelihood that young, unmarried and high-income individuals emigrate from their province of residence (i.e.\ out-migration) rather than a change to in-migration. This suggests that individuals react more strongly to tax changes in their home province rather than tax changes in other provinces.`,
+    abstract: `This paper estimates the causal effect of income taxation on inter-provincial migration in Canada. We exploit a major tax decentralization reform between 1998-2001 that led to some[...]`,
     links: [
       { text: 'Paper Available at SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6572404' },
     ],
@@ -172,7 +172,7 @@ const workingPapers: Paper[] = [
     title: 'The Impact of Government Social Spending on the Elasticity of Taxable Income',
     authors: '',
     description: 'Working Paper',
-    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on how governments use tax revenue. This paper asks whether a similar relationship is visible in aggregate by examining whether top earners are less responsive to tax rates in countries that spend more on social programs. I construct a panel of 16 OECD countries from 1981 to 2019, combining top marginal tax rates, top 1% fiscal income shares, and government social expenditure. Using a model with country and year fixed effects, I estimate the ETI for individual countries and groups of countries and examine how it varies with total social spending and expenditure across social program categories. I find that top earners exhibit a lower ETI, on average, in countries with higher social spending. Differences in top income shares, top marginal tax rates, and tax administration expenses do not fully explain this relationship. My findings complement microeconomic evidence on how the use of local tax revenue influences tax compliance by showing that aggregate measures of tax sensitivity also vary with how governments spend revenue at the national level. This relationship is descriptive rather than causal, but it suggests that the behavioural costs of taxation may depend on not only the design of the tax system but also how governments spend the revenue it generates.`,
+    abstract: `Research shows that the elasticity of taxable income (ETI) depends on features of the tax system, and a growing microeconomic literature shows that tax compliance depends partly on[...]`,
     links: [],
     requestable: true,
   },
@@ -181,7 +181,7 @@ const workingPapers: Paper[] = [
     title: 'Labour Supply Responses to Marginal Tax Rates, Average Tax Rates, and Tax Progressivity',
     authors: 'With Li-Hsin Lin',
     description: 'Working Paper',
-    abstract:`Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, however, is mixed: some studies find strong responses to marginal incentives, whereas others find behavior more consistent with broader measures of tax burden. This paper studies labour supply responses to changes in marginal and average tax rates induced by shifts between linear and nonlinear tax schedules. We design a controlled laboratory experiment in which participants complete a real-effort task across multiple stages, constructing individualized linear and nonlinear tax schedules around each participant’s prior labour supply to separately identify the effects of marginal and average tax rates. We find that participants significantly reduce labour supply under the progressive tax schedule when the average tax rate is held constant, whereas responses are less consistent when the marginal tax rate is held constant. This inconsistency is driven by heterogeneity between participants who are sensitive to marginal incentives and those who are not. These findings suggest that future research may benefit from explicitly accounting for distinct behavioral types.`,
+    abstract:`Standard models of labour supply predict that individuals respond to the marginal tax rate, which determines the net-of-tax return to work at the margin. Empirical evidence, however[...]`,
     links: [],
     requestable: true,
   },
@@ -190,8 +190,9 @@ const workingPapers: Paper[] = [
 const PaperComponent: React.FC<{
   paper: Paper;
   onRequestModal: (title: string) => void;
-}> = ({ paper, onRequestModal }) => {
-  const [abstractOpen, setAbstractOpen] = useState(false);
+  isJobMarketPaper?: boolean;
+}> = ({ paper, onRequestModal, isJobMarketPaper = false }) => {
+  const [abstractOpen, setAbstractOpen] = useState(isJobMarketPaper);
   const hasAbstract = paper.abstract && paper.abstract.trim() !== '' && !paper.abstract.includes('[Description to be added]');
 
   return (
@@ -204,7 +205,7 @@ const PaperComponent: React.FC<{
         <details className={styles.abstractDetails} open={abstractOpen} onToggle={() => setAbstractOpen(!abstractOpen)}>
           <summary className={styles.abstractSummary}>
             <span className={styles.abstractTriangle}></span>
-            <span className={styles.abstractLabel}>Show Abstract</span>
+            <span className={styles.abstractLabel}>{abstractOpen ? 'Hide Abstract' : 'Show Abstract'}</span>
           </summary>
           <div className={styles.abstractContent}>
             {paper.abstract}
@@ -315,34 +316,34 @@ const Home: NextPage = () => {
                 <li><strong>B.A. Honours Economics</strong> – Wilfrid Laurier University (2019)</li>
               </ul>
             </div>
-          </div>
-        </section>
 
-        {/* About Section */}
-        <section className={styles.aboutSection}>
-          <h2 className={styles.aboutHeading}>About</h2>
-          <p className={styles.aboutText}>
-            I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods from applied microeconomics alongside experimental methods. I study how personal tax systems influence individual behaviour, with particular attention to labour supply, migration and tax avoidance.
-          </p>
-          <button
-            className={styles.expandButton}
-            onClick={() => setExpandedBio(!expandedBio)}
-          >
-            {expandedBio ? 'Show Less' : 'Show More'}
-          </button>
-          {expandedBio && (
-            <div className={styles.expandedBio}>
-              <p>
-                I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with the toolkit I have developed. If existing data are insufficient to pursue an idea or identify an underlying mechanism, I can always design an experiment, collect my own data in the lab, and figure out what’s driving the behaviour. I am particularly interested in how tax policy affects tax avoidance and evasion and how fiscal policy can reduce income inequality. My prior and current research explores how tax systems influence the choices individuals make to avoid taxation. My future research will extend this agenda to tax evasion and optimal enforcement. I plan to study the joint design of tax schedules and audit policy when audit costs and expected revenue vary across the income distribution, examining how governments should allocate limited enforcement resources.
+            {/* About Section - Moved into profileInfo */}
+            <section className={styles.aboutSectionInline}>
+              <h2 className={styles.aboutHeadingInline}>About</h2>
+              <p className={styles.aboutText}>
+                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods [...]
               </p>
-            </div>
-          )}
-        </section>
+              <button
+                className={styles.expandButton}
+                onClick={() => setExpandedBio(!expandedBio)}
+              >
+                {expandedBio ? 'Show Less' : 'Show More'}
+              </button>
+              {expandedBio && (
+                <div className={styles.expandedBio}>
+                  <p>
+                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with t[...]
+                  </p>
+                </div>
+              )}
+            </section>
 
-        {/* Job Market Paper Section */}
-        <section id="research" className={styles.researchSection}>
-          <h2 className={styles.sectionHeading}>Job Market Paper</h2>
-          <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} />
+            {/* Job Market Paper - Moved into profileInfo */}
+            <section id="research" className={styles.jobMarketPaperInline}>
+              <h2 className={styles.sectionHeadingInline}>Job Market Paper</h2>
+              <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} isJobMarketPaper={true} />
+            </section>
+          </div>
         </section>
 
         {/* Working Papers Section */}
