@@ -114,21 +114,18 @@
    PROFILE SECTION
    ============================================ */
 
-/* Mobile-first: single column layout */
 .profileSection {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 45px;
+  align-items: start;
   margin-bottom: 60px;
 }
 
-/* Desktop: two-column grid layout */
-@media (min-width: 992px) {
+@media (max-width: 991px) {
   .profileSection {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 45px;
-    align-items: start;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
@@ -136,14 +133,6 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  /* Order: 2 on mobile (after name only), 1 on desktop */
-  order: 2;
-}
-
-@media (min-width: 992px) {
-  .profilePortrait {
-    order: 1;
-  }
 }
 
 .portraitImage {
@@ -159,14 +148,6 @@
 .profileInfo {
   display: flex;
   flex-direction: column;
-  /* Order: 1 on mobile (first - just the name), 2 on desktop */
-  order: 1;
-}
-
-@media (min-width: 992px) {
-  .profileInfo {
-    order: 2;
-  }
 }
 
 .profileName {
@@ -190,14 +171,6 @@
   margin: 0 0 0.5rem 0;
   font-weight: 500;
   line-height: 1.3;
-  /* Order: 3 on mobile (after photo), 2 on desktop */
-  order: 3;
-}
-
-@media (min-width: 992px) {
-  .profileRole {
-    order: initial;
-  }
 }
 
 .profileAffiliation {
@@ -206,14 +179,6 @@
   margin: 0 0 1.5rem 0;
   font-weight: 400;
   line-height: var(--line-height-body);
-  /* Order: 4 on mobile, 3 on desktop */
-  order: 4;
-}
-
-@media (min-width: 992px) {
-  .profileAffiliation {
-    order: initial;
-  }
 }
 
 .contactInfo {
@@ -222,15 +187,6 @@
   line-height: var(--line-height-body);
   margin-bottom: 1rem;
   margin-top: 1.5rem;
-  /* Order: 6 on mobile (after about/JMP), 3 on desktop */
-  order: 6;
-}
-
-@media (min-width: 992px) {
-  .contactInfo {
-    order: initial;
-    margin-top: 0;
-  }
 }
 
 .contactInfo p {
@@ -255,14 +211,6 @@
 
 .education {
   margin-top: 0.75rem;
-  /* Order: 7 on mobile (last), 4 on desktop */
-  order: 7;
-}
-
-@media (min-width: 992px) {
-  .education {
-    order: initial;
-  }
 }
 
 .educationHeading {
