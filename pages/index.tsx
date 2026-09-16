@@ -357,6 +357,18 @@ const Home: NextPage = () => {
           </div>
         </section>
 
+        {/* Teaching Section */}
+        <section className={styles.teachingSection}>
+          <h2 className={styles.sectionHeading}>Teaching</h2>
+          <div className={styles.teachingContainer}>
+            <div className={styles.course}>
+              <div className={styles.courseCode}>Econ 2ZZ3: Intermediate Microeconomics II</div>
+              <div className={styles.courseRole}>Instructor</div>
+              <div className={styles.courseDetails}>Winter 2025, McMaster University</div>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className={styles.footer}>
           <p>&copy; {new Date().getFullYear()} Robert McKercher. All rights reserved.</p>
