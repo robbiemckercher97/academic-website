@@ -162,7 +162,7 @@
 .profileAffiliation {
   font-size: var(--font-body);
   color: var(--color-text);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.25rem 0;
   font-weight: 400;
   line-height: var(--line-height-body);
 }
@@ -722,10 +722,17 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .profilePortrait {
     width: 100%;
+    order: 2;
+  }
+
+  .profileInfo {
+    order: 1;
   }
 
   .profileName {
