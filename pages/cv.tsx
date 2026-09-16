@@ -107,6 +107,18 @@ const CVPage: NextPage = () => {
     document.body.removeChild(link);
   };
 
+  const scrollToSection = (sectionId: string, offset: number = 0) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <>
       <Head>
@@ -127,12 +139,27 @@ const CVPage: NextPage = () => {
           <ul className={styles.navLinks}>
             <li>
               <Link href="/">
+                <a>About</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
                 <a>Research</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>JMP</a>
               </Link>
             </li>
             <li>
               <Link href="/cv">
                 <a>CV</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>Teaching</a>
               </Link>
             </li>
           </ul>
