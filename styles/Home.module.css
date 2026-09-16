@@ -113,18 +113,37 @@
 /* ============================================
    PROFILE SECTION
    ============================================ */
+
+/* Mobile-first: single column layout */
 .profileSection {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   margin-bottom: 60px;
-  align-items: start;
+}
+
+/* Desktop: two-column grid layout */
+@media (min-width: 992px) {
+  .profileSection {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 45px;
+    align-items: start;
+  }
 }
 
 .profilePortrait {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  /* Order: 3 on mobile (after profileInfo), 1 on desktop */
+  order: 3;
+}
+
+@media (min-width: 992px) {
+  .profilePortrait {
+    order: 1;
+  }
 }
 
 .portraitImage {
@@ -140,15 +159,29 @@
 .profileInfo {
   display: flex;
   flex-direction: column;
+  /* Order: 1 on mobile (first), 2 on desktop */
+  order: 1;
+}
+
+@media (min-width: 992px) {
+  .profileInfo {
+    order: 2;
+  }
 }
 
 .profileName {
-  font-size: var(--font-profile-name);
+  font-size: var(--font-profile-name-mobile);
   font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.7px;
   line-height: 1.2;
+}
+
+@media (min-width: 992px) {
+  .profileName {
+    font-size: var(--font-profile-name);
+  }
 }
 
 .profileRole {
@@ -162,7 +195,7 @@
 .profileAffiliation {
   font-size: var(--font-body);
   color: var(--color-text);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 1.5rem 0;
   font-weight: 400;
   line-height: var(--line-height-body);
 }
@@ -172,6 +205,16 @@
   color: var(--color-text);
   line-height: var(--line-height-body);
   margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  /* Order: 4 on mobile (after portrait), 3 on desktop */
+  order: 4;
+}
+
+@media (min-width: 992px) {
+  .contactInfo {
+    order: 3;
+    margin-top: 0;
+  }
 }
 
 .contactInfo p {
@@ -196,107 +239,94 @@
 
 .education {
   margin-top: 0.75rem;
+  /* Order: 5 on mobile (last), 4 on desktop */
+  order: 5;
+}
+
+@media (min-width: 992px) {
+  .education {
+    order: 4;
+  }
 }
 
 .educationHeading {
   font-size: var(--font-secondary);
   font-weight: 600;
   color: var(--color-primary);
-  margin: 0 0 0.75rem 0;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.3px;
 }
 
 .educationList {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: var(--font-body);
-  color: var(--color-text);
-  line-height: 1.5;
 }
 
 .educationList li {
-  margin: 0;
-}
-
-.educationList strong {
-  font-weight: 600;
-  color: var(--color-primary);
+  font-size: var(--font-body);
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+  line-height: var(--line-height-body);
 }
 
 /* ============================================
-   ABOUT SECTION (INLINE IN PROFILE)
+   ABOUT SECTION
    ============================================ */
-.aboutSectionInline {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+.aboutSection {
+  margin-bottom: 60px;
 }
 
-.aboutHeadingInline {
-  font-size: 1.75rem;
-  font-weight: 600;
+.aboutHeading {
+  font-size: var(--font-section-heading-mobile);
+  font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 1rem 0;
   letter-spacing: -0.5px;
-  line-height: 1.2;
+}
+
+@media (min-width: 992px) {
+  .aboutHeading {
+    font-size: var(--font-section-heading);
+  }
 }
 
 .aboutText {
+  font-size: var(--font-body);
   color: var(--color-text);
+  line-height: var(--line-height-body);
   margin-bottom: 1rem;
-  line-height: 1.7;
-  font-size: var(--font-body);
-}
-
-.expandedBio {
-  color: var(--color-text);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  font-size: var(--font-body);
-}
-
-.expandedBio p {
-  margin: 0.75rem 0;
 }
 
 .expandButton {
   background: none;
   border: none;
   color: var(--color-primary);
-  padding: 0;
   font-size: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  padding: 0;
   text-decoration: underline;
   transition: color 0.3s ease;
-  margin-bottom: 1.5rem;
 }
 
 .expandButton:hover {
-  color: #1f3d2a;
+  color: var(--color-accent);
 }
 
-/* ============================================
-   JOB MARKET PAPER (INLINE IN PROFILE)
-   ============================================ */
-.jobMarketPaperInline {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+.expandedBio {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--color-bg-light);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 4px;
 }
 
-.sectionHeadingInline {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin: 0 0 1.5rem 0;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
+.expandedBio p {
+  font-size: var(--font-body);
+  color: var(--color-text);
+  line-height: var(--line-height-body);
+  margin: 0;
 }
 
 /* ============================================
@@ -307,200 +337,149 @@
 }
 
 .sectionHeading {
-  font-size: var(--font-section-heading);
-  font-weight: 600;
+  font-size: var(--font-section-heading-mobile);
+  font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 2rem 0;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid #3d7a4d;
   letter-spacing: -0.5px;
-  line-height: 1.2;
 }
 
-/* ============================================
-   PAPERS & RESEARCH
-   ============================================ */
+@media (min-width: 992px) {
+  .sectionHeading {
+    font-size: var(--font-section-heading);
+  }
+}
+
 .papersContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .paper {
-  padding: 1.5rem;
-  background: white;
-  border-left: 4px solid #3d7a4d;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(45, 90, 61, 0.08);
-  transition: all 0.3s ease;
-}
-
-.paper:hover {
-  box-shadow: 0 4px 12px rgba(45, 90, 61, 0.15);
-  transform: translateX(4px);
+  padding: 2rem;
+  background-color: var(--color-bg-light);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
 }
 
 .paperTitle {
-  font-weight: 700;
   font-size: var(--font-paper-title);
+  font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 0.5rem 0;
-  line-height: 1.4;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
 }
 
 .paperAuthors {
-  font-style: italic;
-  color: var(--color-meta);
-  margin: 0 0 0.75rem 0;
   font-size: var(--font-body);
+  color: var(--color-accent);
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  line-height: var(--line-height-body);
 }
 
 .paperDescription {
-  color: var(--color-text);
-  margin: 0 0 1rem 0;
-  line-height: 1.6;
   font-size: var(--font-body);
+  color: var(--color-meta);
+  margin: 0 0 1rem 0;
+  font-weight: 400;
+  font-style: italic;
+  line-height: var(--line-height-body);
 }
 
-/* ============================================
-   ABSTRACT DISCLOSURE
-   ============================================ */
 .abstractDetails {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   cursor: pointer;
+}
+
+.abstractDetails[open] .abstractTriangle {
+  transform: rotate(90deg);
 }
 
 .abstractSummary {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  list-style: none;
   font-size: var(--font-body);
   font-weight: 600;
   color: var(--color-primary);
-  cursor: pointer;
   user-select: none;
-  transition: color 0.3s ease;
 }
 
-.abstractSummary:hover {
-  color: #1f3d2a;
-}
-
-/* Remove default summary arrow */
 .abstractSummary::-webkit-details-marker {
   display: none;
 }
 
 .abstractTriangle {
   display: inline-block;
-  width: 0;
-  height: 0;
-  border-left: 0.35rem solid transparent;
-  border-right: 0.35rem solid transparent;
-  border-top: 0.4rem solid currentColor;
-  margin-right: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+  transform: rotate(0deg);
   transition: transform 0.3s ease;
 }
 
-/* Rotate triangle when expanded */
-.abstractDetails[open] .abstractTriangle {
-  transform: rotate(90deg);
-}
-
 .abstractLabel {
-  display: inline-block;
+  cursor: pointer;
 }
 
 .abstractContent {
   margin-top: 1rem;
-  padding: 0;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 4px;
   font-size: var(--font-body);
   color: var(--color-text);
   line-height: var(--line-height-body);
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
-.paperLinks {
-  margin-top: 1rem;
+.paperActions {
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
-}
-
-.paperLinks a {
-  display: inline-block;
-  font-size: var(--font-button);
-  font-weight: 500;
-  color: var(--color-primary);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.paperLinks a:hover {
-  border-bottom-color: var(--color-primary);
-  color: #1f3d2a;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .actionLink {
   display: inline-block;
-  font-size: var(--font-button);
-  font-weight: 500;
-  color: var(--color-primary);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-primary);
+  color: white;
   text-decoration: none;
+  border-radius: 4px;
+  font-size: var(--font-button);
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .actionLink:hover {
-  border-bottom-color: var(--color-primary);
-  color: #1f3d2a;
-}
-
-.paperActions {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  background-color: var(--color-accent);
 }
 
 .actionButton {
   display: inline-block;
-  font-size: var(--font-button);
-  font-weight: 500;
-  color: white;
+  padding: 0.75rem 1.25rem;
   background-color: var(--color-accent);
-  padding: 0.6rem 1.2rem;
+  color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 4px;
+  font-size: var(--font-button);
+  font-weight: 600;
   cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(90, 154, 109, 0.15);
+  transition: background-color 0.3s ease;
 }
 
 .actionButton:hover {
-  background-color: #4a8b5d;
-  box-shadow: 0 4px 12px rgba(90, 154, 109, 0.25);
-  transform: translateY(-2px);
-}
-
-.actionButton:active {
-  transform: translateY(0);
+  background-color: var(--color-primary);
 }
 
 /* ============================================
-   MODAL & FORMS
+   MODAL
    ============================================ */
 .modalOverlay {
   position: fixed;
@@ -508,7 +487,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(45, 90, 61, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -516,85 +495,90 @@
 }
 
 .modal {
-  background: white;
+  background-color: white;
   border-radius: 8px;
   padding: 2rem;
   max-width: 500px;
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  position: relative;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(45, 90, 61, 0.2);
 }
 
 .closeButton {
-  position: sticky;
-  top: 0;
-  right: 0;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: var(--color-text);
   cursor: pointer;
-  color: var(--color-primary);
-  z-index: 1001;
-  padding: 0.5rem;
-  margin: -0.5rem -0.5rem 1rem -0.5rem;
-  align-self: flex-end;
-  display: block;
-  float: right;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .closeButton:hover {
-  opacity: 0.7;
+  color: var(--color-primary);
 }
 
 .modalTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: var(--font-section-heading-mobile);
+  font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 1rem;
-  clear: right;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 992px) {
+  .modalTitle {
+    font-size: var(--font-section-heading);
+  }
 }
 
 .paperTitleDisplay {
-  font-size: var(--font-body);
+  font-size: var(--font-paper-title);
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 1.5rem;
-  padding: 1rem;
-  background-color: var(--color-bg-light);
-  border-radius: 6px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .messagePreview {
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-bg-light);
+  border-radius: 4px;
 }
 
 .messagePreview p {
+  margin: 0 0 0.5rem 0;
   font-size: var(--font-body);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 0.75rem;
+  color: var(--color-text);
+  line-height: var(--line-height-body);
 }
 
 .previewText {
-  background-color: var(--color-bg-light);
+  margin-top: 1rem;
   padding: 1rem;
-  border-radius: 6px;
-  font-size: var(--font-body);
-  color: var(--color-text);
-  line-height: 1.6;
+  background-color: white;
+  border-radius: 4px;
+  border-left: 3px solid var(--color-primary);
 }
 
 .previewText p {
-  margin: 0.5rem 0;
-  font-weight: normal;
+  margin: 0 0 0.5rem 0;
 }
 
 .requestForm {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .formGroup {
@@ -603,19 +587,21 @@
 }
 
 .formGroup label {
+  font-size: var(--font-button);
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
-  font-size: var(--font-button);
 }
 
 .formGroup input,
 .formGroup textarea {
   padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
   font-size: var(--font-body);
   font-family: inherit;
+  color: var(--color-text);
+  transition: border-color 0.3s ease;
 }
 
 .formGroup input:focus,
@@ -626,19 +612,19 @@
 }
 
 .submitButton {
+  padding: 0.75rem 1.5rem;
   background-color: var(--color-primary);
   color: white;
-  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: var(--font-button);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: #1f3d2a;
+  background-color: var(--color-accent);
 }
 
 .submitButton:disabled {
@@ -647,213 +633,80 @@
 }
 
 .formMessage {
-  text-align: center;
-  color: var(--color-primary);
-  font-weight: 500;
-  margin: 0;
   font-size: var(--font-body);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 0;
 }
 
 /* ============================================
    FOOTER
    ============================================ */
 .footer {
-  margin-top: 60px;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
   text-align: center;
-  color: #888;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 60px;
+}
+
+.footer p {
   font-size: var(--font-secondary);
+  color: var(--color-meta);
+  margin: 0;
+  line-height: var(--line-height-body);
 }
 
 /* ============================================
-   CV PAGE
+   RESPONSIVE ADJUSTMENTS
    ============================================ */
-.cvPageWrapper {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 80px);
-  overflow: hidden;
-}
 
-.pdfContainer {
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-}
-
-.pdfViewer {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ============================================
-   MOBILE RESPONSIVE (≤768px)
-   ============================================ */
 @media (max-width: 768px) {
-  .navContainer {
-    padding: 0.75rem 24px;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .navBrand {
-    font-size: 22px;
-    width: 100%;
-  }
-
-  .navLinks {
-    gap: 1.5rem;
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .navLinks a {
-    font-size: 16px;
-  }
-
   .container {
-    padding: 2rem 24px;
+    padding: 2rem 16px;
   }
 
-  /* Profile Section - Stack on Mobile */
-  .profileSection {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
+  .navContainer {
+    padding: 0 16px;
   }
 
-  .profilePortrait {
-    width: 100%;
-    order: 2;
+  .paper {
+    padding: 1.5rem;
   }
 
-  .profileInfo {
-    order: 1;
-  }
-
-  .profileName {
-    font-size: var(--font-profile-name-mobile);
-  }
-
-  .profileRole {
-    font-size: 20px;
-  }
-
-  .profileAffiliation {
-    font-size: var(--font-body-mobile);
-  }
-
-  .contactInfo {
-    font-size: var(--font-body-mobile);
-  }
-
-  .educationList {
-    font-size: var(--font-body-mobile);
-  }
-
-  .aboutText,
-  .expandedBio {
-    font-size: var(--font-body-mobile);
-  }
-
-  .aboutHeadingInline,
-  .sectionHeadingInline {
-    font-size: 1.5rem;
-  }
-
-  .sectionHeading {
-    font-size: var(--font-section-heading-mobile);
-  }
-
-  .paperTitle {
-    font-size: 20px;
-  }
-
-  .paperAuthors,
-  .paperDescription {
-    font-size: var(--font-body-mobile);
-  }
-
-  .abstractSummary {
-    font-size: var(--font-body-mobile);
-  }
-
-  .abstractContent {
-    font-size: var(--font-body-mobile);
-  }
-
-  .paperLinks {
-    gap: 1rem;
-  }
-
-  .cvPageWrapper {
-    height: calc(100vh - 70px);
+  .modal {
+    padding: 1.5rem;
+    width: 95%;
   }
 }
 
-/* ============================================
-   MOBILE RESPONSIVE (≤480px)
-   ============================================ */
 @media (max-width: 480px) {
-  .navContainer,
   .container {
-    padding: 0.75rem 20px 1rem 20px;
-  }
-
-  .navBrand {
-    font-size: 20px;
-  }
-
-  .navLinks a {
-    font-size: 15px;
+    padding: 1.5rem 16px;
   }
 
   .profileName {
     font-size: 28px;
   }
 
-  .profileRole {
-    font-size: 18px;
-  }
-
-  .aboutHeadingInline,
-  .sectionHeadingInline,
   .sectionHeading {
     font-size: 24px;
+  }
+
+  .paper {
+    padding: 1rem;
+    border-left-width: 3px;
   }
 
   .paperTitle {
     font-size: 18px;
   }
 
-  .contactInfo,
-  .educationList,
-  .aboutText,
-  .expandedBio,
-  .paperAuthors,
-  .paperDescription {
-    font-size: var(--font-body-mobile);
+  .navLinks {
+    gap: 1rem;
   }
 
-  .abstractSummary {
-    font-size: var(--font-body-mobile);
-  }
-
-  .abstractContent {
-    font-size: var(--font-body-mobile);
-  }
-
-  .paperLinks {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .paperLinks a,
-  .actionButton {
-    font-size: 15px;
+  .navBrand {
+    font-size: 22px;
   }
 }
