@@ -199,12 +199,10 @@
 }
 
 .educationHeading {
-  font-size: var(--font-secondary);
-  font-weight: 700;
+  font-size: var(--font-body);
+  font-weight: 600;
   color: #000;
   margin: 0 0 0.75rem 0;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
 }
 
 .educationList {
