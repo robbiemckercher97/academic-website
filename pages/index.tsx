@@ -290,12 +290,8 @@ const Home: NextPage = () => {
               alt="Robert McKercher"
               className={styles.portraitImage}
             />
-          </div>
-          <div className={styles.profileInfo}>
-            <h1 className={styles.profileName}>Robert McKercher</h1>
-            <p className={styles.profileRole}>PhD Candidate in Economics</p>
-            <p className={styles.profileAffiliation}>Department of Economics, McMaster University</p>
             
+            {/* Contact Info and Education moved to left column */}
             <div className={styles.contactInfo}>
               <p><strong>Email:</strong> <a href="mailto:mckerchr@mcmaster.ca">mckerchr@mcmaster.ca</a></p>
               <p><strong>Office:</strong> Kenneth Taylor Hall (KTH), Room 706</p>
@@ -316,12 +312,18 @@ const Home: NextPage = () => {
                 <li><strong>B.A. Honours Economics</strong> – Wilfrid Laurier University (2019)</li>
               </ul>
             </div>
+          </div>
 
-            {/* About Section - Moved into profileInfo */}
+          <div className={styles.profileInfo}>
+            <h1 className={styles.profileName}>Robert McKercher</h1>
+            <p className={styles.profileRole}>PhD Candidate in Economics</p>
+            <p className={styles.profileAffiliation}>Department of Economics, McMaster University</p>
+
+            {/* About Section - in right column */}
             <section className={styles.aboutSectionInline}>
               <h2 className={styles.aboutHeadingInline}>About</h2>
               <p className={styles.aboutText}>
-                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods [...]
+                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods from applied microeconomics alongside experimental methods. I study how personal tax systems influence individual behaviour, with particular attention to labour supply, migration and tax avoidance.
               </p>
               <button
                 className={styles.expandButton}
@@ -332,13 +334,13 @@ const Home: NextPage = () => {
               {expandedBio && (
                 <div className={styles.expandedBio}>
                   <p>
-                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with t[...]
+                    I began my academic career expecting to pursue experimental economics, but my broader interest in income inequality led me towards empirical public finance. I am very happy with the toolkit I have developed. If existing data are insufficient to pursue an idea or identify an underlying mechanism, I can always design an experiment, collect my own data in the lab, and figure out what's driving the behaviour. I am particularly interested in how tax policy affects tax avoidance and evasion and how fiscal policy can reduce income inequality. My prior and current research explores how tax systems influence the choices individuals make to avoid taxation. My future research will extend this agenda to tax evasion and optimal enforcement. I plan to study the joint design of tax schedules and audit policy when audit costs and expected revenue vary across the income distribution, examining how governments should allocate limited enforcement resources.
                   </p>
                 </div>
               )}
             </section>
 
-            {/* Job Market Paper - Moved into profileInfo */}
+            {/* Job Market Paper - in right column */}
             <section id="research" className={styles.jobMarketPaperInline}>
               <h2 className={styles.sectionHeadingInline}>Job Market Paper</h2>
               <PaperComponent paper={jobMarketPaper} onRequestModal={openRequestModal} isJobMarketPaper={true} />
