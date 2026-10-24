@@ -341,7 +341,7 @@ const Home: NextPage = () => {
             <section id="about" className={styles.aboutSectionInline}>
               <h2 className={styles.aboutHeadingInline}>About</h2>
               <p className={styles.aboutText}>
-                I am a Ph.D. candidate in economics at McMaster University, currently on the 2026–27 academic job market. My research focuses on questions in public finance using empirical methods, with a particular emphasis on the behavioral responses to taxation and the role of government spending. I am interested in understanding how taxes affect economic decisions, and how public policy can be designed to achieve desired outcomes while minimizing efficiency costs.
+                I am a public finance economist interested in how taxation influences everyday choices, and how fiscal systems can be designed to reduce income inequality and limit tax avoidance. My research uses administrative data and quasi-experimental methods, alongside controlled laboratory experiments, to study how individuals, families, and firms respond to tax and transfer policies. My research is motivated by a curiosity about when and why taxation influences individual choices, including decisions to engage in tax avoidance and evasion, and how these behavioural responses can undermine fiscal policies intended to reduce income inequality. Together, these areas inform my broader research agenda of understanding how to design tax systems that balance efficiency and equity.
               </p>
               <button
                 className={styles.expandButton}
